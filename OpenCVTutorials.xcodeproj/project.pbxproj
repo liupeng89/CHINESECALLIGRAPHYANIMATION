@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		642146FE1BE84C0600C6EEAA /* ThinningProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642146FC1BE84C0600C6EEAA /* ThinningProcess.cpp */; settings = {ASSET_TAGS = (); }; };
+		642147001BE8CD7E00C6EEAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642146FF1BE8CD7E00C6EEAA /* Cocoa.framework */; };
+		642147021BE8CD8800C6EEAA /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642147011BE8CD8800C6EEAA /* GLUT.framework */; };
+		642147041BE8CEB200C6EEAA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642147031BE8CEB200C6EEAA /* OpenGL.framework */; };
+		6435CBE81BDDC6F300B4076B /* FitCurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6435CBE61BDDC6F300B4076B /* FitCurve.cpp */; settings = {ASSET_TAGS = (); }; };
+		6435CBEC1BDDC73400B4076B /* ImgProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6435CBEA1BDDC73400B4076B /* ImgProcess.cpp */; settings = {ASSET_TAGS = (); }; };
 		64803D461BCB84F9007FF94B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64803D451BCB84F9007FF94B /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,8 +29,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		642146FC1BE84C0600C6EEAA /* ThinningProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThinningProcess.cpp; sourceTree = "<group>"; };
+		642146FD1BE84C0600C6EEAA /* ThinningProcess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ThinningProcess.hpp; sourceTree = "<group>"; };
+		642146FF1BE8CD7E00C6EEAA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		642147011BE8CD8800C6EEAA /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		642147031BE8CEB200C6EEAA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		6435CBE61BDDC6F300B4076B /* FitCurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FitCurve.cpp; sourceTree = "<group>"; };
+		6435CBE71BDDC6F300B4076B /* FitCurve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FitCurve.hpp; sourceTree = "<group>"; };
+		6435CBEA1BDDC73400B4076B /* ImgProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImgProcess.cpp; sourceTree = "<group>"; };
+		6435CBEB1BDDC73400B4076B /* ImgProcess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImgProcess.hpp; sourceTree = "<group>"; };
 		64803D421BCB84F9007FF94B /* OpenCVTutorials */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenCVTutorials; sourceTree = BUILT_PRODUCTS_DIR; };
 		64803D451BCB84F9007FF94B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		64803D4D1BCB8809007FF94B /* LJin-0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "LJin-0.jpg"; path = "../LJin-0.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,15 +48,49 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				642147041BE8CEB200C6EEAA /* OpenGL.framework in Frameworks */,
+				642147021BE8CD8800C6EEAA /* GLUT.framework in Frameworks */,
+				642147001BE8CD7E00C6EEAA /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		642146FB1BE84BE500C6EEAA /* ThinningProcess */ = {
+			isa = PBXGroup;
+			children = (
+				642146FC1BE84C0600C6EEAA /* ThinningProcess.cpp */,
+				642146FD1BE84C0600C6EEAA /* ThinningProcess.hpp */,
+			);
+			name = ThinningProcess;
+			sourceTree = "<group>";
+		};
+		6435CBE21BDDC56200B4076B /* FitCurve */ = {
+			isa = PBXGroup;
+			children = (
+				6435CBE61BDDC6F300B4076B /* FitCurve.cpp */,
+				6435CBE71BDDC6F300B4076B /* FitCurve.hpp */,
+			);
+			name = FitCurve;
+			sourceTree = "<group>";
+		};
+		6435CBE91BDDC71900B4076B /* ImageProcess */ = {
+			isa = PBXGroup;
+			children = (
+				6435CBEA1BDDC73400B4076B /* ImgProcess.cpp */,
+				6435CBEB1BDDC73400B4076B /* ImgProcess.hpp */,
+			);
+			name = ImageProcess;
+			sourceTree = "<group>";
+		};
 		64803D391BCB84F9007FF94B = {
 			isa = PBXGroup;
 			children = (
+				642147031BE8CEB200C6EEAA /* OpenGL.framework */,
+				642147011BE8CD8800C6EEAA /* GLUT.framework */,
+				642146FF1BE8CD7E00C6EEAA /* Cocoa.framework */,
+				64803D4E1BCB8937007FF94B /* images */,
 				64803D441BCB84F9007FF94B /* OpenCVTutorials */,
 				64803D431BCB84F9007FF94B /* Products */,
 			);
@@ -57,9 +107,20 @@
 		64803D441BCB84F9007FF94B /* OpenCVTutorials */ = {
 			isa = PBXGroup;
 			children = (
+				642146FB1BE84BE500C6EEAA /* ThinningProcess */,
+				6435CBE91BDDC71900B4076B /* ImageProcess */,
+				6435CBE21BDDC56200B4076B /* FitCurve */,
 				64803D451BCB84F9007FF94B /* main.cpp */,
+				64803D4D1BCB8809007FF94B /* LJin-0.jpg */,
 			);
 			path = OpenCVTutorials;
+			sourceTree = "<group>";
+		};
+		64803D4E1BCB8937007FF94B /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +179,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6435CBEC1BDDC73400B4076B /* ImgProcess.cpp in Sources */,
 				64803D461BCB84F9007FF94B /* main.cpp in Sources */,
+				642146FE1BE84C0600C6EEAA /* ThinningProcess.cpp in Sources */,
+				6435CBE81BDDC6F300B4076B /* FitCurve.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +269,27 @@
 		64803D4A1BCB84F9007FF94B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-lopencv_calib3d",
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_highgui",
+					"-lopencv_imgcodecs",
+					"-lopencv_imgproc",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_photo",
+					"-lopencv_shape",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_ts",
+					"-lopencv_video",
+					"-lopencv_videoio",
+					"-lopencv_videostab",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -212,6 +297,27 @@
 		64803D4B1BCB84F9007FF94B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-lopencv_calib3d",
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_highgui",
+					"-lopencv_imgcodecs",
+					"-lopencv_imgproc",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_photo",
+					"-lopencv_shape",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_ts",
+					"-lopencv_video",
+					"-lopencv_videoio",
+					"-lopencv_videostab",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -235,6 +341,7 @@
 				64803D4B1BCB84F9007FF94B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
