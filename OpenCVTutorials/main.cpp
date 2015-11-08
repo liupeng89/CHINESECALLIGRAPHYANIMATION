@@ -36,7 +36,7 @@ struct PathElement {
     float ra,rb;
 };
 // Paths array
-struct PathElement paths[49];
+struct PathElement paths[241];
 
 void DrawCircle(float cx, float cy, float r, int num_segments);
 void DrawEllipse(PathElement element);
@@ -59,6 +59,7 @@ void Draw() {
         discount++;
     }
     cout<< discount << endl;
+    cout << paths[discount].x << ":" << paths[discount].y << ":" << paths[discount].ra << ":" << paths[discount].rb << endl;
     glEnd();
     glFlush();
 }
@@ -77,7 +78,7 @@ void drawEllipse(float dx, float dy, float xradius, float yradius)
 void Timer(int iUnused)
 {
     glutPostRedisplay();
-    glutTimerFunc(1000, Timer, 0);
+    glutTimerFunc(100, Timer, 0);
 }
 
 void Initialize() {
@@ -101,21 +102,27 @@ void initPath()
     
     FILE *fr = fopen("/Users/peterliu/Documents/openDevelopment/path.txt", "r");
     int index = 0;
-    int l = 49;
-    MiddleLineElement temp[l];
     
-    while (fscanf(fr, "%f %f %f %f",&temp[index].x, &temp[index].y,&temp[index].ra, &temp[index].rb) == 4) {
+    float pointx, pointy, ra, rb;
+    
+    while (fscanf(fr, "%f %f %f %f", &pointx, &pointy, &ra, &rb) == 4) {
+        cout << pointx << ":" << pointy << ":"  << ra << ":"  << rb << endl;
+        paths[index].x = pointx / 500.0;
+        paths[index].y = 1 - pointy / 500.0;
+        
+        paths[index].ra = ra / 1000.0;
+        paths[index].rb = rb / 1000.0;
         index++;
     }
     
-    for (int i = 0; i < l; i++) {
-        // convert
-        paths[i].x = temp[i].x / 300.0;
-        paths[i].y = temp[i].y / 300.0;
-        paths[i].ra = temp[i].ra / 1000.0;
-        paths[i].rb = temp[i].rb / 1000.0;
-        cout <<temp[i].x << ":" <<temp[i].y <<":"<< temp[i].ra <<":"<< temp[i].rb <<endl;
-    }
+//    for (int i = 0; i < l; i++) {
+//        // convert
+//        paths[i].x = temp[i].x / 300.0;
+//        paths[i].y = temp[i].y / 300.0;
+//        paths[i].ra = temp[i].ra / 1000.0;
+//        paths[i].rb = temp[i].rb / 1000.0;
+//        cout <<temp[i].x << ":" <<temp[i].y <<":"<< temp[i].ra <<":"<< temp[i].rb <<endl;
+//    }
     
     // Data convertation.
 //    int len = 50; // Hard code , need to modify.

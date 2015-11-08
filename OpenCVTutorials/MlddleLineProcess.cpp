@@ -13,14 +13,20 @@ void middleLine()
     int pathLen; // Path length
     
     //Read image
-    Mat source = imread("/Users/peterliu/Documents/openDevelopment/one.png");
+    Mat source = imread("/Users/peterliu/Documents/openDevelopment/one.jpg");
     if (source.empty()) {
         cout << "Read file error!" <<endl;
     }
+    
+    // Gray the image
+    cvtColor(source, source, CV_BGR2GRAY);
+    threshold(source, source, 128, 255, CV_THRESH_BINARY);
+    
+    cout << source.channels() << endl;
     // Get the max length from left to right.
     
-    int leftPointY = 0;
-    int rigthPointY = 0;
+    int leftPointX = 0;
+    int rigthPointX = 0;
     
     int rows = source.rows;
     int cols = source.cols;
@@ -28,34 +34,31 @@ void middleLine()
     cout << rows << endl;
     cout << cols << endl;
     // Left start point
-    for (int c = 0; c < cols; c++) {
+    
+    for (int r = 0; r < rows; r++) {
         bool isEnd = false;
-        for (int r = 0; r < rows; r++) {
+        for (int c = 0; c < cols; c++) {
             // left
-            Vec3b color = source.at<Vec3b>(Point(r,c));
-            // The point is black color.
-            if (color[0] < 10 &&color[1] < 10 && color[2] < 10) {
-                // Left point
-                leftPointY = c;
+            Scalar color = source.at<uchar>(c,r);
+            if (color.val[0] < 254) {
+                leftPointX = r;
                 isEnd = true;
                 break;
             }
-            
         }
         if (isEnd) {
             break;
         }
     }
+    
     // Right end point
-    for (int c = cols-1; c > 0; c--) {
+    for (int r = rows-1; r >0 ; r--) {
         bool isEnd = false;
-        for (int r = 0; r < rows; r++) {
-            //left
-            Vec3b color = source.at<Vec3b>(Point(r,c));
-            // The point is black color.
-            if (color[0] < 10 &&color[1] < 10 && color[2] < 10) {
-                // Left point
-                rigthPointY = c;
+        for (int c = 0; c < cols; c++) {
+            //Right
+            Scalar color = source.at<uchar>(c,r);
+            if (color.val[0] < 254) {
+                rigthPointX = r;
                 isEnd = true;
                 break;
             }
@@ -64,11 +67,11 @@ void middleLine()
             break;
         }
     }
+        
+    cout << "left:" << leftPointX << endl;
+    cout << "right:" << rigthPointX << endl;
     
-    cout << "left:" << leftPointY << endl;
-    cout << "right:" << rigthPointY << endl;
-    
-    pathLen = rigthPointY - leftPointY;
+    pathLen = rigthPointX - leftPointX;
     cout << "len:" << pathLen << endl;
     
     if (pathLen == 0) {
@@ -78,39 +81,40 @@ void middleLine()
     // Calculate the middle line of image.
     MiddleLineElement paths[pathLen];
     
-    for (int i = leftPointY; i < rigthPointY; i++) {
+    for (int x = leftPointX; x < rigthPointX; x++) {
         // Get the middle line.
         int minCol = 0;
         int maxCol = 0;
-        for (int j = 0; j < cols; j++) {
+        for (int y = 0; y < rows; y++) {
             //
-            Vec3b color = source.at<Vec3b>(Point(j,i));
+            Scalar color = source.at<uchar>(y,x);
             // The black point.
-            if (color[0] < 10 && color[10] < 10 && color[10] < 10) {
+            if (color.val[0] < 254) {
                 // min col
-                minCol = j;
+                minCol = y;
                 break;
             }
         }
         
         //Max col
-        for (int j = 0; j < cols; j++) {
+        for (int y = minCol+1; y < rows; y++) {
             //
-            Vec3b color = source.at<Vec3b>(Point(j,i));
+            Scalar color = source.at<uchar>(y,x);
             // The black point.
-            if (color[0] < 10 && color[10] < 10 && color[10] < 10) {
+            if (color.val[0] >= 254) {
                 // min col
-                maxCol = j;
+                maxCol = y-1;
+                break;
             }
         }
         
         int middleCol = minCol + (maxCol - minCol + 1) / 2;
-        paths[i-leftPointY].y = i;
-        paths[i-leftPointY].x = middleCol;
-        paths[i-leftPointY].ra = 5;
-        paths[i-leftPointY].rb = (maxCol - minCol + 1) / 2;
+        paths[x-leftPointX].y = x;
+        paths[x-leftPointX].x = middleCol;
+        paths[x-leftPointX].ra = 5;
+        paths[x-leftPointX].rb = (maxCol - minCol + 1) / 2;
         
-        cout << paths[i-leftPointY].x << ":" << paths[i-leftPointY].y << "--" << paths[i-leftPointY].ra << ":" << paths[i-leftPointY].rb << endl;
+        cout << paths[x-leftPointX].x << ":" << paths[x-leftPointX].y << "--" << paths[x-leftPointX].ra << ":" << paths[x-leftPointX].rb << endl;
         
     }
     
@@ -123,7 +127,7 @@ void middleLine()
     
     for (int i = 0; i < pathLen; i++) {
         // writh file
-        fprintf(ofp, "%f %f %f %f\n",paths[i].x,paths[i].y,paths[i].ra,paths[i].rb);
+        fprintf(ofp, "%f %f %f %f\n",paths[i].y,paths[i].x,paths[i].ra,paths[i].rb);
     }
     fclose(ofp);
 
