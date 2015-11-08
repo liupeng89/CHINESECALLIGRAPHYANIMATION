@@ -13,7 +13,9 @@ void middleLine()
     int pathLen; // Path length
     
     //Read image
-    Mat source = imread("/Users/peterliu/Documents/openDevelopment/one.jpg");
+//    Mat source = imread("/Users/peterliu/Documents/openDevelopment/one.jpg");
+    Mat source = imread("/Users/heermaster/Documents/openDevelopment/one.jpg");
+    
     if (source.empty()) {
         cout << "Read file error!" <<endl;
     }
@@ -107,7 +109,7 @@ void middleLine()
                 break;
             }
         }
-        
+        //Path element
         int middleCol = minCol + (maxCol - minCol + 1) / 2;
         paths[x-leftPointX].y = x;
         paths[x-leftPointX].x = middleCol;
@@ -119,7 +121,8 @@ void middleLine()
     }
     
     // Write to file
-    FILE *ofp = fopen("/Users/peterliu/Documents/openDevelopment/path.txt", "w");
+//    FILE *ofp = fopen("/Users/peterliu/Documents/openDevelopment/path.txt", "w");
+    FILE *ofp = fopen("/Users/heermaster/Documents/openDevelopment/path.txt", "w");
     
     if (ofp == NULL) {
         cout << "Open file error!" << endl;
@@ -133,7 +136,7 @@ void middleLine()
 
 }
 
-
+/* Get the middle line path. */
 MiddleLineElement* getMiddleLine()
 {
     

@@ -20,6 +20,8 @@ using namespace std;
 int discount = 0;
 const int pathLen = 460;
 
+const int delay = 10;
+
 typedef float GLfloat;
 typedef int GLint;
 
@@ -51,7 +53,7 @@ void initPath();
  */
 void Draw() {
 
-    glColor3f(1.0, 0.0, 1.0);
+    glColor3f(0.0, 0.0, 0.0);
     glBegin(GL_TRIANGLE_FAN);
     
     drawEllipse(paths[discount].x, paths[discount].y, paths[discount].ra, paths[discount].rb);
@@ -78,11 +80,11 @@ void drawEllipse(float dx, float dy, float xradius, float yradius)
 void Timer(int iUnused)
 {
     glutPostRedisplay();
-    glutTimerFunc(100, Timer, 0);
+    glutTimerFunc(delay, Timer, 0);
 }
 
 void Initialize() {
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClearColor(1.0, 1.0, 1.0, 0.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
@@ -100,7 +102,8 @@ void initPath()
     // Load image
     middleLine();
     
-    FILE *fr = fopen("/Users/peterliu/Documents/openDevelopment/path.txt", "r");
+//    FILE *fr = fopen("/Users/peterliu/Documents/openDevelopment/path.txt", "r");
+    FILE *fr = fopen("/Users/heermaster/Documents/openDevelopment/path.txt", "r");
     int index = 0;
     
     float pointx, pointy, ra, rb;
@@ -111,40 +114,9 @@ void initPath()
         paths[index].y = 1 - pointy / 500.0;
         
         paths[index].ra = ra / 1000.0;
-        paths[index].rb = rb / 1000.0;
+        paths[index].rb = rb / 800.0;
         index++;
     }
-    
-//    for (int i = 0; i < l; i++) {
-//        // convert
-//        paths[i].x = temp[i].x / 300.0;
-//        paths[i].y = temp[i].y / 300.0;
-//        paths[i].ra = temp[i].ra / 1000.0;
-//        paths[i].rb = temp[i].rb / 1000.0;
-//        cout <<temp[i].x << ":" <<temp[i].y <<":"<< temp[i].ra <<":"<< temp[i].rb <<endl;
-//    }
-    
-    // Data convertation.
-//    int len = 50; // Hard code , need to modify.
-//    
-//    if (len == 0) {
-//        return;
-//    }
-//    cout << "len:" << len << endl;
-//    PathElement p[len];
-//    
-//    for (int i = 0; i < len; i++) {
-//        MiddleLineElement m = middle[i];
-//        
-//        p[i].x = m.x / 300.0;
-//        p[i].y = m.y / 300.0;
-//        p[i].ra = m.ra / 1000.0;
-//        p[i].rb = m.rb / 1000.0;
-//        cout << m.x << ":" << m.y << ":"<< m.ra << ":" << m.rb << endl;
-////        cout << p[i].x << ":" << p[i].y << ":"<< p[i].ra << ":" << p[i].rb << endl;
-//    }
-//    
-//    paths = p;
 }
 
 int main(int argc, char** argv) {

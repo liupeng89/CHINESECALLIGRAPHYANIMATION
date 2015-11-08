@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ImgProcess.cpp \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ImgProcess.hpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/ImgProcess.cpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/ImgProcess.hpp \
   /usr/local/include/opencv2/opencv.hpp \
   /usr/local/include/opencv2/core.hpp \
   /usr/local/include/opencv2/core/cvdef.h \
