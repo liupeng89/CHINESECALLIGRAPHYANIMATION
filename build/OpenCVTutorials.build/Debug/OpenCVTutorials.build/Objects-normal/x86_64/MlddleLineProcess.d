@@ -1,5 +1,5 @@
 dependencies: \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/main.cpp \
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/MlddleLineProcess.cpp \
   /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/MlddleLineProcess.hpp \
   /usr/local/include/opencv2/opencv.hpp \
   /usr/local/include/opencv2/core.hpp \
