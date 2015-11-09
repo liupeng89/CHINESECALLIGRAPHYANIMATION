@@ -8,17 +8,13 @@
 
 #include "MlddleLineProcess.hpp"
 
+
 void middleLine()
 {
     int pathLen; // Path length
     
     //Read image
-//    Mat source = imread("/Users/peterliu/Documents/openDevelopment/one.jpg");
-    Mat source = imread("/Users/heermaster/Documents/openDevelopment/one.jpg");
-    
-    if (source.empty()) {
-        cout << "Read file error!" <<endl;
-    }
+    Mat source = loadImageFile(imageSrc);
     
     // Gray the image
     cvtColor(source, source, CV_BGR2GRAY);
@@ -36,7 +32,6 @@ void middleLine()
     cout << rows << endl;
     cout << cols << endl;
     // Left start point
-    
     for (int r = 0; r < rows; r++) {
         bool isEnd = false;
         for (int c = 0; c < cols; c++) {
@@ -113,7 +108,7 @@ void middleLine()
         int middleCol = minCol + (maxCol - minCol + 1) / 2;
         paths[x-leftPointX].y = x;
         paths[x-leftPointX].x = middleCol;
-        paths[x-leftPointX].ra = 5;
+        paths[x-leftPointX].ra = ellipseRA;
         paths[x-leftPointX].rb = (maxCol - minCol + 1) / 2;
         
         cout << paths[x-leftPointX].x << ":" << paths[x-leftPointX].y << "--" << paths[x-leftPointX].ra << ":" << paths[x-leftPointX].rb << endl;
@@ -121,8 +116,7 @@ void middleLine()
     }
     
     // Write to file
-//    FILE *ofp = fopen("/Users/peterliu/Documents/openDevelopment/path.txt", "w");
-    FILE *ofp = fopen("/Users/heermaster/Documents/openDevelopment/path.txt", "w");
+    FILE *ofp = fopen(pathTxt.c_str(), "w");
     
     if (ofp == NULL) {
         cout << "Open file error!" << endl;
@@ -135,6 +129,20 @@ void middleLine()
     fclose(ofp);
 
 }
+
+/* Load image file*/
+Mat loadImageFile(String path)
+{
+    Mat source = imread(path);
+    
+    if (source.empty()) {
+        cout << "Load file error!" << endl;
+    }
+    return source;
+}
+
+
+
 
 /* Get the middle line path. */
 MiddleLineElement* getMiddleLine()

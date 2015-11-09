@@ -9,6 +9,7 @@
 #ifndef MlddleLineProcess_hpp
 #define MlddleLineProcess_hpp
 
+#include <string>
 #include <stdio.h>
 #include <GLUT/GLUT.h>
 
@@ -18,6 +19,14 @@
 using namespace cv;
 using namespace std;
 
+const float ellipseRA = 9.0;
+
+const String imageSrc = "/Users/peterliu/Documents/openDevelopment/one.jpg";
+const String pathTxt = "/Users/peterliu/Documents/openDevelopment/path.txt";
+
+//const String imageSrc = "/Users/heermaster/Documents/openDevelopment/one.jpg";
+//const String pathTxt = "/Users/heermaster/Documents/openDevelopment/path.txt";
+
 struct MiddleLineElement
 {
     GLfloat x,y;
@@ -26,6 +35,9 @@ struct MiddleLineElement
 
 MiddleLineElement* getMiddleLine();
 void middleLine();
+
+Mat loadImageFile(String path);
+
 
 
 #endif /* MlddleLineProcess_hpp */

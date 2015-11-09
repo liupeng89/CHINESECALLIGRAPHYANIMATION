@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/main.cpp \
-  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/MlddleLineProcess.hpp \
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/main.cpp \
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/MlddleLineProcess.hpp \
   /usr/local/include/opencv2/opencv.hpp \
   /usr/local/include/opencv2/core.hpp \
   /usr/local/include/opencv2/core/cvdef.h \
