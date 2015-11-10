@@ -51,4 +51,6 @@ dependencies: \
   /usr/local/include/opencv2/videoio/videoio_c.h \
   /usr/local/include/opencv2/ml.hpp \
   /usr/local/include/opencv2/core/core.hpp \
-  /usr/local/include/opencv2/highgui/highgui.hpp
+  /usr/local/include/opencv2/highgui/highgui.hpp \
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ThinningProcess.hpp \
+  /usr/local/include/opencv2/imgproc/imgproc.hpp
