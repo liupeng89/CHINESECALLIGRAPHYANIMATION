@@ -39,6 +39,7 @@ CenterLineElement* getMiddleLine();
 void middleLine();
 
 Mat loadImageFile(String path);
+CenterLineElement* initCenterPath();
 
 
 
