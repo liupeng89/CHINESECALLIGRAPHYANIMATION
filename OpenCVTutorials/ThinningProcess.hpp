@@ -16,7 +16,7 @@
 using namespace cv;
 
 void thinningIteration(cv::Mat& img, int iter);
-void thinning(const cv::Mat& src, cv::Mat& dst);
+void thinningImage(const cv::Mat& src, cv::Mat& dst);
 
 
 #endif /* ThinningProcess_hpp */

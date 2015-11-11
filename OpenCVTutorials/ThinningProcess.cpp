@@ -94,7 +94,7 @@ void thinningIteration(cv::Mat& img, int iter)
  * 		src  The source image, binary with range = [0,255]
  * 		dst  The destination image
  */
-void thinning(const cv::Mat& src, cv::Mat& dst)
+void thinningImage(const cv::Mat& src, cv::Mat& dst)
 {
     dst = src.clone();
     dst /= 255;         // convert to binary image

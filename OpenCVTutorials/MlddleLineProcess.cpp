@@ -8,21 +8,24 @@
 
 #include "MlddleLineProcess.hpp"
 
+
+/* Middle line or Center line */
 void middleLine()
 {
     int pathLen; // Path length
     
     //Read image
-//    Mat source = imread("/Users/peterliu/Documents/openDevelopment/one.jpg");
-    Mat source = imread("/Users/heermaster/Documents/openDevelopment/one.jpg");
-    
-    if (source.empty()) {
-        cout << "Read file error!" <<endl;
-    }
+    Mat source = loadImageFile(imageSrc);
     
     // Gray the image
     cvtColor(source, source, CV_BGR2GRAY);
     threshold(source, source, 128, 255, CV_THRESH_BINARY);
+    
+    // Thinning function
+    Mat thinning;
+    thinningImage(source, thinning);
+    imshow("source", source);
+    imshow("Thinning ", thinning);
     
     cout << source.channels() << endl;
     // Get the max length from left to right.
@@ -36,7 +39,6 @@ void middleLine()
     cout << rows << endl;
     cout << cols << endl;
     // Left start point
-    
     for (int r = 0; r < rows; r++) {
         bool isEnd = false;
         for (int c = 0; c < cols; c++) {
@@ -81,7 +83,7 @@ void middleLine()
     }
     
     // Calculate the middle line of image.
-    MiddleLineElement paths[pathLen];
+    CenterLineElement paths[pathLen];
     
     for (int x = leftPointX; x < rigthPointX; x++) {
         // Get the middle line.
@@ -113,16 +115,25 @@ void middleLine()
         int middleCol = minCol + (maxCol - minCol + 1) / 2;
         paths[x-leftPointX].y = x;
         paths[x-leftPointX].x = middleCol;
-        paths[x-leftPointX].ra = 5;
+        paths[x-leftPointX].ra = ellipseRA;
         paths[x-leftPointX].rb = (maxCol - minCol + 1) / 2;
+        
+        // Calculate the alpha value
+        if (x == leftPointX || x == rigthPointX-1) {
+            paths[x-leftPointX].alpha = 0;
+        }else {
+            paths[x-leftPointX].alpha = atan((x - paths[x-leftPointX-1].y)/(middleCol - paths[x-leftPointX-1].x));
+        }
         
         cout << paths[x-leftPointX].x << ":" << paths[x-leftPointX].y << "--" << paths[x-leftPointX].ra << ":" << paths[x-leftPointX].rb << endl;
         
     }
+    //Modify the start and end alpha
+    paths[0].alpha = paths[1].alpha;
+    paths[rigthPointX-leftPointX-1].alpha = paths[rigthPointX-leftPointX-2].alpha;
     
     // Write to file
-//    FILE *ofp = fopen("/Users/peterliu/Documents/openDevelopment/path.txt", "w");
-    FILE *ofp = fopen("/Users/heermaster/Documents/openDevelopment/path.txt", "w");
+    FILE *ofp = fopen(pathTxt.c_str(), "w");
     
     if (ofp == NULL) {
         cout << "Open file error!" << endl;
@@ -130,14 +141,28 @@ void middleLine()
     
     for (int i = 0; i < pathLen; i++) {
         // writh file
-        fprintf(ofp, "%f %f %f %f\n",paths[i].y,paths[i].x,paths[i].ra,paths[i].rb);
+        fprintf(ofp, "%f %f %f %f %f\n",paths[i].y,paths[i].x,paths[i].ra,paths[i].rb,paths[i].alpha);
     }
     fclose(ofp);
 
 }
 
+/* Load image file*/
+Mat loadImageFile(String path)
+{
+    Mat source = imread(path);
+    
+    if (source.empty()) {
+        cout << "Load file error!" << endl;
+    }
+    return source;
+}
+
+
+
+
 /* Get the middle line path. */
-MiddleLineElement* getMiddleLine()
+CenterLineElement* getMiddleLine()
 {
     
     int pathLen; // Path length
@@ -206,7 +231,7 @@ MiddleLineElement* getMiddleLine()
     }
     
     // Calculate the middle line of image.
-    MiddleLineElement paths[pathLen];
+    CenterLineElement paths[pathLen];
     
     for (int i = leftPointY; i < rigthPointY; i++) {
         // Get the middle line.
