@@ -16,7 +16,9 @@ CenterLineElement* initCenterPath()
         1. Load the image file.
      */
     // Load the image file
-    Mat source = loadImageFile("/Users/peterliu/Documents/openDevelopment/one.jpg");
+//    Mat source = loadImageFile("/Users/peterliu/Documents/openDevelopment/one.jpg");
+    Mat source = loadImageFile("/Users/heermaster/Documents/openDevelopment/one.jpg");
+    
     imshow("source", source);
     
     /**
@@ -41,7 +43,8 @@ CenterLineElement* initCenterPath()
     int thin_rows = thinning.rows;
     int thin_cols = thinning.cols;
     
-    CenterLineElement centerPaths[thin_cols];
+    CenterLineElement skeletonPaths[thin_cols]; // Skeleton paths
+    CenterLineElement centerPaths[thin_cols]; // Center paths
     int pathIndex = 0;
     
     for (int x = 0; x < thin_cols; x++) {
@@ -50,8 +53,8 @@ CenterLineElement* initCenterPath()
             Scalar color = thinning.at<uchar>(Point(x,y));
             if (color.val[0] > 254) {
                 // Save the coordinates.
-                centerPaths[pathIndex].x = x;
-                centerPaths[pathIndex].y = y;
+                skeletonPaths[pathIndex].x = x;
+                skeletonPaths[pathIndex].y = y;
                 // ra and rb
                 // alpha
                 pathIndex++;
@@ -90,20 +93,24 @@ CenterLineElement* initCenterPath()
     cout << "leftpoint:" << leftPointX << ":" << leftPointY << endl;
     
     // Left point to start point line.
-    int leftSegmentLen = abs(leftPointX - centerPaths[0].x) > abs(leftPointY - centerPaths[0].y) ? abs(leftPointX - centerPaths[0].x) : abs(leftPointY - centerPaths[0].y);
+    int leftSegmentLen = abs(leftPointX - skeletonPaths[0].x) > abs(leftPointY - skeletonPaths[0].y) ? abs(leftPointX - skeletonPaths[0].x) : abs(leftPointY - skeletonPaths[0].y);
     CenterLineElement leftsegment[leftSegmentLen];
-    for (int x = leftPointX; x < centerPaths[0].x; x++) {
-        int y2 = centerPaths[0].y;
-        int x2 = centerPaths[0].x;
+    for (int x = leftPointX; x < skeletonPaths[0].x; x++) {
+        int y2 = skeletonPaths[0].y;
+        int x2 = skeletonPaths[0].x;
         int y = (x - leftPointX) / (x2 - leftPointX) * (y2 - leftPointY) + leftPointY;
         leftsegment[x - leftPointX].x = x;
         leftsegment[x - leftPointX].y = y;
     }
-    
+    // Print the left segment coordinates ---- add left segment
     for (int i = 0; i < leftSegmentLen; i++) {
         cout << leftsegment[i].x << ":" << leftsegment[i].y << endl;
+        centerPaths[i] = leftsegment[i];
     }
-    
+    // Add skeleton coordinates
+    for (int i = leftSegmentLen; i < thin_cols; i++) {
+        centerPaths[i] = skeletonPaths[i - leftSegmentLen];
+    }
     
 
     
