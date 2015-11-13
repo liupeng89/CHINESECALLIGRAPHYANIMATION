@@ -15,6 +15,9 @@
 #include "MlddleLineProcess.hpp"
 using namespace std;
 
+const int WindowWidth = 300;
+const int WindowHeight = 300;
+
 const String pathSrc = "/Users/peterliu/Documents/openDevelopment/path.txt";
 //const String pathSrc = "/Users/heermaster/Documents/openDevelopment/path.txt";
 
@@ -62,8 +65,8 @@ void Draw() {
     glColor3f(0.0, 0.0, 0.0);
     glBegin(GL_TRIANGLE_FAN);
     
-    drawEllipse(paths[discount].x, paths[discount].y, paths[discount].ra, paths[discount].rb, paths[discount].alpha);
-//    drawEllipse(paths[discount].x, paths[discount].y, paths[discount].ra, paths[discount].rb);
+//    drawEllipse(paths[discount].x, paths[discount].y, paths[discount].ra, paths[discount].rb, paths[discount].alpha);
+    drawEllipse(paths[discount].x, paths[discount].y, paths[discount].ra, paths[discount].rb);
     if (discount < pathLen) {
         discount++;
     }
@@ -102,7 +105,10 @@ void drawEllipse(float dx, float dy, float xradius, float yradius, float alpha)
             x' = x * cos(a) - y * sin(a)
             y' = x * sin(a) + y * cos(a)
          */
-        glVertex2f(orignx * cos(alpha) - origny * sin(alpha), orignx * sin(alpha) + origny * cos(alpha)); // Ellipse rotation
+        float x = orignx * cos(alpha) - origny * sin(alpha);
+        float y = orignx * sin(alpha) + origny * cos(alpha);
+        
+        glVertex2f(x, y); // Ellipse rotation
     }
 }
 
@@ -115,38 +121,38 @@ void initPath()
     // Load path information.
     
     // Load image
-//    middleLine();
-//    
-//    FILE *fr = fopen(pathSrc.c_str(), "r");
-//    
-//    float pointx, pointy, ra, rb, alpha;
-//    // Path information convertion
-//    while (fscanf(fr, "%f %f %f %f %f", &pointx, &pointy, &ra, &rb, &alpha) == 5) {
-//        cout << pointx << ":" << pointy << ":"  << ra << ":"  << rb << endl;
-//        paths[index].x = pointx / 300.0;
-//        paths[index].y = 1 - pointy / 300.0;
-//        
-//        paths[index].ra = ra / 1000.0;
-//        paths[index].rb = rb / 300.0;
-//        paths[index].alpha = alpha;
-//        index++;
-//    }
-//    
-    /* Method two: */
-    CenterLineElement *centerPathLine = initCenterPath();
-    index = 0;
-    CenterLineElement tmp = *(centerPathLine + index);
-    while (tmp.x >=0 && tmp.x < 300 && tmp.y >=0 && tmp.y < 300) {
-        //
-        paths[index].x = tmp.x / 300.0;
-        paths[index].y = 1 - tmp.y / 300.0;
+    middleLine();
+    
+    FILE *fr = fopen(pathSrc.c_str(), "r");
+    
+    float pointx, pointy, ra, rb, alpha;
+    // Path information convertion
+    while (fscanf(fr, "%f %f %f %f %f", &pointx, &pointy, &ra, &rb, &alpha) == 5) {
+        cout << pointx << ":" << pointy << ":"  << ra << ":"  << rb << endl;
+        paths[index].x = pointx / WindowWidth;
+        paths[index].y = 1 - pointy / WindowHeight;
         
-        paths[index].ra = tmp.ra / 300.0;
-        paths[index].rb = tmp.rb / 300.0;
-        paths[index].alpha = tmp.alpha;
+        paths[index].ra = ra / 1000.0;
+        paths[index].rb = rb / 300.0;
+        paths[index].alpha = alpha;
         index++;
-        tmp = *(centerPathLine + index);
     }
+//
+    /* Method two: */
+//    CenterLineElement *centerPathLine = initCenterPath();
+//    index = 0;
+//    CenterLineElement tmp = *(centerPathLine + index);
+//    while (tmp.x >=0 && tmp.x < 300 && tmp.y >=0 && tmp.y < 300) {
+//        //
+//        paths[index].x = tmp.x / 300.0;
+//        paths[index].y = 1 - tmp.y / 300.0;
+//        
+//        paths[index].ra = tmp.ra / 300.0;
+//        paths[index].rb = tmp.rb / 300.0;
+//        paths[index].alpha = tmp.alpha;
+//        index++;
+//        tmp = *(centerPathLine + index);
+//    }
 }
 
 
@@ -177,7 +183,7 @@ int main(int argc, char** argv) {
     /* OpenGL Animation */
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(300, 300);
+    glutInitWindowSize(WindowWidth, WindowHeight);
     glutInitWindowPosition(200, 200);
     glutCreateWindow("Chinese Animation");
     Initialize();
