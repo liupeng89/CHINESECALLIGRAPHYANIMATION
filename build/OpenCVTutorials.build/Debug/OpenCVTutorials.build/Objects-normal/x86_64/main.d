@@ -54,4 +54,5 @@ dependencies: \
   /usr/local/include/opencv2/highgui/highgui.hpp \
   /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ThinningProcess.hpp \
   /usr/local/include/opencv2/imgproc/imgproc.hpp \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ImageProcess.hpp
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ImageProcess.hpp \
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/EdgeDetection.hpp

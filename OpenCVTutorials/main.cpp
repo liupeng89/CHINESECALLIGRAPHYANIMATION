@@ -14,6 +14,7 @@
 //#include <math.h>
 #include "MlddleLineProcess.hpp"
 #include "ImageProcess.hpp"
+#include "EdgeDetection.hpp"
 using namespace std;
 
 //const int WindowWidth = 300;

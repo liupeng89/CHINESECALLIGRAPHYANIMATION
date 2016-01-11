@@ -30,9 +30,5 @@ const int GAUSSIANTHRESHOLD = 0.5;
 
 Mat processImage(Mat); // Process image---gray, denoise and filter.
 
-//void edgeDetection(Mat); // Edge detection
 
-Mat edgeDetection(Mat);
-
-void saveEdgeData(Mat);
 #endif /* ImageProcess_hpp */
