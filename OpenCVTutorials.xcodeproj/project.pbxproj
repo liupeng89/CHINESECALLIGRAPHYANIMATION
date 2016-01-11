@@ -15,6 +15,7 @@
 		6435CBE81BDDC6F300B4076B /* FitCurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6435CBE61BDDC6F300B4076B /* FitCurve.cpp */; settings = {ASSET_TAGS = (); }; };
 		6435CBEC1BDDC73400B4076B /* ImgProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6435CBEA1BDDC73400B4076B /* ImgProcess.cpp */; settings = {ASSET_TAGS = (); }; };
 		64803D461BCB84F9007FF94B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64803D451BCB84F9007FF94B /* main.cpp */; };
+		64A59D141C43735B008E8CFE /* ImageProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A59D121C43735B008E8CFE /* ImageProcess.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +45,8 @@
 		64803D421BCB84F9007FF94B /* OpenCVTutorials */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenCVTutorials; sourceTree = BUILT_PRODUCTS_DIR; };
 		64803D451BCB84F9007FF94B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		64803D4D1BCB8809007FF94B /* LJin-0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "LJin-0.jpg"; path = "../LJin-0.jpg"; sourceTree = "<group>"; };
+		64A59D121C43735B008E8CFE /* ImageProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageProcess.cpp; sourceTree = "<group>"; };
+		64A59D131C43735B008E8CFE /* ImageProcess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImageProcess.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 			children = (
 				6435CBEA1BDDC73400B4076B /* ImgProcess.cpp */,
 				6435CBEB1BDDC73400B4076B /* ImgProcess.hpp */,
+				64A59D121C43735B008E8CFE /* ImageProcess.cpp */,
+				64A59D131C43735B008E8CFE /* ImageProcess.hpp */,
 			);
 			name = ImageProcess;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				642147441BEF154800C6EEAA /* MlddleLineProcess.cpp in Sources */,
+				64A59D141C43735B008E8CFE /* ImageProcess.cpp in Sources */,
 				6435CBEC1BDDC73400B4076B /* ImgProcess.cpp in Sources */,
 				64803D461BCB84F9007FF94B /* main.cpp in Sources */,
 				642146FE1BE84C0600C6EEAA /* ThinningProcess.cpp in Sources */,

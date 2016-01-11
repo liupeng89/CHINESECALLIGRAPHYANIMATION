@@ -408,16 +408,6 @@ void middleLine()
 
 }
 
-/* Load image file*/
-Mat loadImageFile(String path)
-{
-    Mat source = imread(path);
-    
-    if (source.empty()) {
-        cout << "Load file error!" << endl;
-    }
-    return source;
-}
 
 /* Preprocess the source image */
 Mat preprocessImage(Mat source)
