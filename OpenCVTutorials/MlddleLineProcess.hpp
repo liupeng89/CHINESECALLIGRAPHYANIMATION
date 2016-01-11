@@ -20,7 +20,7 @@
 using namespace cv;
 using namespace std;
 
-const float ellipseRA = 12.0;
+const float ellipseRA = 5.0;
 
 const String imageSrc = "/Users/peterliu/Documents/openDevelopment/one.jpg";
 const String pathTxt = "/Users/peterliu/Documents/openDevelopment/path.txt";
@@ -38,7 +38,8 @@ struct CenterLineElement
 CenterLineElement* getMiddleLine();
 void middleLine();
 
-Mat loadImageFile(String path);
+Mat loadImageFile(String);
+Mat preprocessImage(Mat);
 CenterLineElement* initCenterPath();
 
 

@@ -16,8 +16,8 @@ CenterLineElement* initCenterPath()
         1. Load the image file.
      */
     // Load the image file
-//    Mat source = loadImageFile("/Users/peterliu/Documents/openDevelopment/one.jpg");
-    Mat source = loadImageFile("/Users/heermaster/Documents/openDevelopment/one.jpg");
+    Mat source = loadImageFile("/Users/peterliu/Documents/openDevelopment/one.jpg");
+//    Mat source = loadImageFile("/Users/heermaster/Documents/openDevelopment/one.jpg");
     
     imshow("source", source);
     
@@ -27,8 +27,9 @@ CenterLineElement* initCenterPath()
     // Gray the image
     cvtColor(source, source, CV_BGR2GRAY);
     threshold(source, source, 128, 255, CV_THRESH_BINARY);
-    Mat source_copy;
+    Mat source_copy, source_centerline;
     source.copyTo(source_copy);
+    source.copyTo(source_centerline);
     // Change color---thinning need!
     bitwise_not(source, source);
     
@@ -95,6 +96,7 @@ CenterLineElement* initCenterPath()
     // Left point to start point line.
     int leftSegmentLen = abs(leftPointX - skeletonPaths[0].x) > abs(leftPointY - skeletonPaths[0].y) ? abs(leftPointX - skeletonPaths[0].x) : abs(leftPointY - skeletonPaths[0].y);
     CenterLineElement leftsegment[leftSegmentLen];
+    // Left segment point coordinates
     for (int x = leftPointX; x < skeletonPaths[0].x; x++) {
         int y2 = skeletonPaths[0].y;
         int x2 = skeletonPaths[0].x;
@@ -112,8 +114,6 @@ CenterLineElement* initCenterPath()
         centerPaths[i] = skeletonPaths[i - leftSegmentLen];
     }
     
-
-    
     /* Calculate the center line length. */
     int centerLength = 0;
     
@@ -126,6 +126,13 @@ CenterLineElement* initCenterPath()
     }
     cout<< "Length:" << centerLength << endl;
     
+    
+    // Change the center line color.
+    for (int i = 0; i < centerLength; i++) {
+        // change the center line color.
+        source_centerline.at<uchar>(Point(centerPaths[i].x, centerPaths[i].y)) = 255;
+    }
+    imshow("Centerline", source_centerline);
     
     /* Calculate the alpha */
     for (int index = 0; index < centerLength; index++) {
@@ -143,15 +150,21 @@ CenterLineElement* initCenterPath()
     centerPaths[centerLength-1].alpha = centerPaths[centerLength - 2].alpha;
     
     // Remove noises too small == 0
+    
+    for (int i = 0; i < 31; i++) {
+        centerPaths[i].alpha = 0.785398;
+    }
+    
     for (int i = 0; i < centerLength; i++) {
         if (centerPaths[i].alpha < 0.01) {
             centerPaths[i].alpha = 0.0;
         }
+        
     }
     
     /* Calculate the Ra and Rb. */
     
-    for (int i = 1; i < centerLength; i++) {
+    for (int i = leftSegmentLen; i < centerLength; i++) {
         //
         int x_o = centerPaths[i].x;
         int y_o = centerPaths[i].y;
@@ -210,10 +223,17 @@ CenterLineElement* initCenterPath()
     }
     
     // start point ra rb;
+    float rbLen = centerPaths[leftSegmentLen].rb / leftSegmentLen;
+    for (int i = 0; i < leftSegmentLen; i++) {
+        //
+        centerPaths[i].ra = 5.0;
+        centerPaths[i].rb = rbLen * i;
+    }
+    
     
     // Remove noise of ra / rb ，too small is zero
     for (int i = 0; i < centerLength; i++ ) {
-        if (centerPaths[i].rb < 0.1) {
+        if (centerPaths[i].rb < 0.1 || centerPaths[i].rb > 1000) {
             centerPaths[i].rb = 0.0;
         }
     }
@@ -235,17 +255,10 @@ void middleLine()
     //Read image
     Mat source = loadImageFile(imageSrc);
     
-    // Gray the image
-    cvtColor(source, source, CV_BGR2GRAY);
-    threshold(source, source, 200, 255, CV_THRESH_BINARY);
-    
-    imshow("source", source);
-    
-    // Thinning function
-//    Mat thinning;
-//    thinningImage(source, thinning);
-    
-//    imshow("Thinning ", thinning);
+    source = preprocessImage(source);
+    // Center line image
+    Mat source_centerline;
+    source.copyTo(source_centerline);
     
     cout << source.channels() << endl;
     // Get the max length from left to right.
@@ -276,9 +289,9 @@ void middleLine()
     }
     
     // Right end point
-    for (int r = rows-1; r >0 ; r--) {
+    for (int r = rows-1; r >=0 ; r--) {
         bool isEnd = false;
-        for (int c = 0; c < cols; c++) {
+        for (int c = cols-1; c >=0; c--) {
             //Right
             Scalar color = source.at<uchar>(c,r);
             if (color.val[0] < 254) {
@@ -291,7 +304,23 @@ void middleLine()
             break;
         }
     }
-        
+    
+//    for (int c = cols-1; c >=0; c--) {
+//        bool isEnd = false;
+//        for (int r = rows-1; r >=0 ; r--) {
+//            //Right
+//            Scalar color = source.at<uchar>(Point(r,c));
+//            if (color.val[0] < 254) {
+//                rigthPointX = r;
+//                isEnd = true;
+//                break;
+//            }
+//        }
+//        if (isEnd) {
+//            break;
+//        }
+//    }
+    
     cout << "left:" << leftPointX << endl;
     cout << "right:" << rigthPointX << endl;
     
@@ -352,6 +381,18 @@ void middleLine()
     paths[0].alpha = paths[1].alpha;
     paths[rigthPointX-leftPointX-1].alpha = paths[rigthPointX-leftPointX-2].alpha;
     
+    // Smooth the center line function
+    
+    
+    
+    
+    
+    // Draw the center line image
+    for (int i = 0; i < pathLen; i++) {
+        source_centerline.at<uchar>(paths[i].x, paths[i].y) = 255;
+    }
+    imshow("Centerline", source_centerline);
+    
     // Write to file
     FILE *ofp = fopen(pathTxt.c_str(), "w");
     
@@ -367,13 +408,16 @@ void middleLine()
 
 }
 
-/* Load image file*/
-Mat loadImageFile(String path)
+
+/* Preprocess the source image */
+Mat preprocessImage(Mat source)
 {
-    Mat source = imread(path);
+    GaussianBlur(source, source, Size(3,3), 1.0);
     
-    if (source.empty()) {
-        cout << "Load file error!" << endl;
-    }
+    // Gray the image
+    cvtColor(source, source, CV_BGR2GRAY);
+    threshold(source, source, 200, 255, CV_THRESH_BINARY);
+    
+    imshow("source", source);
     return source;
 }

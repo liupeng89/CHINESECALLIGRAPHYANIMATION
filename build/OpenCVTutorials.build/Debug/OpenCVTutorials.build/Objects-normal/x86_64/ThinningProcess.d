@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/ThinningProcess.cpp \
-  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/ThinningProcess.hpp \
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ThinningProcess.cpp \
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ThinningProcess.hpp \
   /usr/local/include/opencv2/imgproc/imgproc.hpp \
   /usr/local/include/opencv2/imgproc.hpp \
   /usr/local/include/opencv2/core.hpp \
