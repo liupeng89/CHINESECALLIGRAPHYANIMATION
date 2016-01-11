@@ -6,6 +6,7 @@
 //  Copyright © 2015 PeterLiu. All rights reserved.
 //
 #include <string>
+#include <time.h>
 #include <iostream>
 //#include "ImgProcess.hpp"
 //#include "FitCurve.hpp"
@@ -203,7 +204,7 @@ void imageProcess()
     
     saveEdgeData(edge);
     
-    waitKey(0);
+//    waitKey(0);
     source.release();
     gray.release();
     edge.release();
@@ -234,8 +235,13 @@ int main(int argc, char** argv) {
     // 1. Edge detection to get the edge data;
     // 2. The stroke model;
     // 3. The trace of stroke;
-    
+    clock_t t1, t2;
+    t1 = clock();
     imageProcess();
+    t2 = clock();
+    
+    float diff = (float) (t2 - t1) / CLOCKS_PER_SEC * 1000;
+    cout << "Running time:" << diff << "ms" << endl;
     
     /* The OpenGl function */
 //    animation(argc, argv);
