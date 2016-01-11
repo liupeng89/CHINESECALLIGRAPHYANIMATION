@@ -88,7 +88,11 @@ void drawEllipse(float dx, float dy, float xradius, float yradius)
 {
     for (float i = 0.0; i < 360.0; i+=0.1) {
         float degInRad = i * DEG2RAD;
-        glVertex2f(cos(degInRad)*xradius + dx, sin(degInRad)*yradius + dy);
+        float _x = cos(degInRad)*xradius + dx;
+        float _y = sin(degInRad)*yradius + dy;
+        // The contraited conditions
+        
+        glVertex2f(_x, _y);
     }
     
 }
@@ -179,6 +183,13 @@ void Initialize() {
     
 }
 
+/*
+    This is the Chinese colligraphy animation project!
+    
+    This project main function is converting the static Chinese Colligraphy image to the dynamatic animation.To achieve this target, this project implement a lot of algorithms of image process and 
+    graphic. 
+ */
+
 int main(int argc, char** argv) {
 
     /* OpenGL Animation */
@@ -192,153 +203,6 @@ int main(int argc, char** argv) {
     Timer(0);
     glutMainLoop();
     
-//    // Thinning function
-//    Mat source = imread("/Users/peterliu/Documents/openDevelopment/one.jpg");
-//    if (source.empty()) {
-//        cout<< "Load image error!" << endl;
-//    }
-//    
-//    imshow("source", source);
-//    
-//    // Gray the image
-//    cvtColor(source, source, CV_BGR2GRAY);
-//    threshold(source, source, 128, 255, CV_THRESH_BINARY);
-//    Mat source_copy;
-//    source.copyTo(source_copy);
-//    // Change color
-//    bitwise_not(source, source);
-//    Mat thinning;
-//    
-//    thinningImage(source, thinning);
-//    
-//    // Get the center line coordinates.
-//    int thin_rows = thinning.rows;
-//    int thin_cols = thinning.cols;
-//    
-//    CenterLineElement centerPaths[thin_cols];
-//    int pathIndex = 0;
-//    
-//    for (int x = 0; x < thin_cols; x++) {
-//        for (int y = 0; y < thin_rows; y++) {
-//            //
-//            Scalar color = thinning.at<uchar>(Point(x,y));
-//            if (color.val[0] > 254) {
-//                // Save the coordinates.
-//                centerPaths[pathIndex].x = x;
-//                centerPaths[pathIndex].y = y;
-//                // ra and rb
-//                // alpha
-//                pathIndex++;
-//            }
-//        }
-//    }
-//    
-//    /* Calculate the center line length. */
-//    int centerLength = 0;
-//    
-//    for (int i = 0; i < thin_cols; i++) {
-//        // print the center line coordinations
-//        if (centerPaths[i].x <= 1.0 || centerPaths[i].x > 300) {
-//            break;
-//        }
-//        centerLength++;
-//    }
-//    cout<< "Length:" << centerLength << endl;
-//    
-//    
-//    /* Calculate the alpha */
-//    for (int index = 0; index < centerLength; index++) {
-//        if (index == 0 || index == centerLength-1) {
-//            centerPaths[index].alpha = 0.0;
-//        }else {
-//            if (centerPaths[index].x - centerPaths[index-1].x != 0) {
-//                centerPaths[index].alpha = atan((centerPaths[index].y - centerPaths[index-1].y)/(centerPaths[index].x - centerPaths[index-1].x));
-//            }
-//        }
-//    }
-//    
-//    //Start point and end point, to keep the continuity.
-//    centerPaths[0].alpha = centerPaths[1].alpha;
-//    centerPaths[centerLength-1].alpha = centerPaths[centerLength - 2].alpha;
-//    
-//    // Remove noises too small == 0
-//    for (int i = 0; i < centerLength; i++) {
-//        if (centerPaths[i].alpha < 0.01) {
-//            centerPaths[i].alpha = 0.0;
-//        }
-//    }
-//    
-//    /* Calculate the Ra and Rb. */
-//    
-//    for (int i = 1; i < centerLength; i++) {
-//        //
-//        int x_o = centerPaths[i].x;
-//        int y_o = centerPaths[i].y;
-//        int offset = 1;
-//        // Positive
-//        int x = x_o + offset;
-//        int y;
-//        if (centerPaths[i].alpha != 0.0) {
-//            y = (x_o - x) / tan(centerPaths[i].alpha) + y_o;
-//        }else {
-//            y = y_o + offset;
-//        }
-//        Scalar color = source_copy.at<uchar>(Point(x, y));
-//        while (color.val[0] < 254) {
-//            x += offset;
-//            if (centerPaths[i].alpha != 0.0) {
-//                y = (x_o - x) / tan(centerPaths[i].alpha) + y_o;
-//            }else{
-//                y += offset;
-//            }
-//            color = source_copy.at<uchar>(Point(x, y));
-//        }
-//        int _x1 = x;
-//        int _y1 = y;
-//        
-//        //Negative
-//        x = x_o - offset;
-//        if (centerPaths[i].alpha != 0.0) {
-//            y = (x_o - x) / tan(centerPaths[i].alpha) + y_o;
-//        }else {
-//            y = y_o + offset;
-//        }
-//        
-//        color = source_copy.at<uchar>(Point(x,y));
-//        while (color.val[0] < 254) {
-//            x -= offset;
-//            if (centerPaths[i].alpha != 0.0) {
-//                y = (x_o - x) / tan(centerPaths[i].alpha) + y_o;
-//            }else{
-//                // Vertical coordinate
-//                y -= offset;
-//            }
-//            color = source_copy.at<uchar>(Point(x, y));
-//        }
-//        
-//        int _x2 = x;
-//        int _y2 = y;
-//        
-//        float tmpRb1 = sqrt((_y1 - y_o)*(_y1 - y_o) + (_x1 - x_o) * (_x1 - x_o));
-//        float tmpRb2 = sqrt((y_o - _y2) * (y_o - _y2) + (x_o - _x2) * (x_o - _x2));
-//        // Average of temp rb
-//        float rb = ( tmpRb1 + tmpRb2 ) / 2;
-//        
-//        centerPaths[i].rb = rb;
-//        centerPaths[i].ra = 5.0;
-//    }
-//    
-//    // start point ra rb;
-//    
-//    for (int i = 0; i < centerLength; i++) {
-//        // print the center line coordinations
-//        cout << "(" << centerPaths[i].x << "," << centerPaths[i].y << ")" << "- " << centerPaths[i].alpha << "--" << centerPaths[i].rb <<endl;
-//    }
-//    
-//    
-//    imshow("Thinning ", thinning);
-//    
-//    waitKey(0);
     
     return 0;
 
