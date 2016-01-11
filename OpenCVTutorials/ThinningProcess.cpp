@@ -59,6 +59,7 @@ void thinningIteration(cv::Mat& img, int iter)
         so = &(pBelow[0]);
         se = &(pBelow[1]);
         
+        
         for (x = 1; x < img.cols-1; ++x) {
             // shift col pointers left by one (scan left to right)
             nw = no;
