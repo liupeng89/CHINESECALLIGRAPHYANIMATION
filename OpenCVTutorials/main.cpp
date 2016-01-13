@@ -16,6 +16,7 @@
 #include "MlddleLineProcess.hpp"
 #include "ImageProcess.hpp"
 #include "EdgeDetection.hpp"
+#include "Demo.hpp"
 using namespace std;
 
 //const int WindowWidth = 300;
@@ -202,7 +203,8 @@ void imageProcess()
     imshow("gray", gray);
     imshow("edge", edge);
     
-    saveEdgeData(edge);
+//    saveEdgeData(edge);
+    saveEdgeDataToFile(edge);
     
 //    waitKey(0);
     source.release();
@@ -235,16 +237,36 @@ int main(int argc, char** argv) {
     // 1. Edge detection to get the edge data;
     // 2. The stroke model;
     // 3. The trace of stroke;
-    clock_t t1, t2;
-    t1 = clock();
-    imageProcess();
-    t2 = clock();
-    
-    float diff = (float) (t2 - t1) / CLOCKS_PER_SEC * 1000;
-    cout << "Running time:" << diff << "ms" << endl;
+//    clock_t t1, t2;
+//    t1 = clock();
+////    imageProcess();
+////    middleLine();
+//
+//    string image = "/Users/peterliu/Documents/openDevelopment/trace.png";
+//    Mat src = imread(image);
+//    cvtColor(src, src, CV_BGR2GRAY, 1);
+//    cout << "the channel:" << src.channels() << endl;
+//    
+//    imshow("Src", src);
+//    // Change black to white
+//    bitwise_not(src, src);
+//
+//    
+//    Mat thinning ;
+//    thinningImage(src, thinning);
+//    bitwise_not(thinning, thinning);
+//    imshow("Thinning ", thinning);
+//    waitKey(0);
+//    
+//    t2 = clock();
+//    
+//    float diff = (float) (t2 - t1) / CLOCKS_PER_SEC * 1000;
+//    cout << "Running time:" << diff << "ms" << endl;
     
     /* The OpenGl function */
 //    animation(argc, argv);
+    
+    demo();
     
     return 0;
 

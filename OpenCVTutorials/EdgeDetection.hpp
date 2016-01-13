@@ -16,10 +16,15 @@
 using namespace cv;
 using namespace std;
 
+const string edgeDataFilePath = "/Users/peterliu/Documents/openDevelopment/edgeData.txt";
+
 //void edgeDetection(Mat); // Edge detection
 
 Mat edgeDetection(Mat);
 
 void saveEdgeData(Mat);
+
+void saveEdgeDataToFile(Mat);
+void saveEdgeDataToFile(Mat, string);
 
 #endif /* EdgeDetection_hpp */

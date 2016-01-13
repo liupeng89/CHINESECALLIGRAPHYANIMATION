@@ -55,4 +55,5 @@ dependencies: \
   /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ThinningProcess.hpp \
   /usr/local/include/opencv2/imgproc/imgproc.hpp \
   /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ImageProcess.hpp \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/EdgeDetection.hpp
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/EdgeDetection.hpp \
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/Demo.hpp

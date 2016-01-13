@@ -113,3 +113,16 @@ void thinningImage(const cv::Mat& src, cv::Mat& dst)
     
     dst *= 255;
 }
+
+
+/*
+    Save the thinning data to a file.
+ 
+*/
+void saveThinningDataToFile(Mat src, string file){
+    if (src.empty()) {
+        return;
+    }
+    
+    return;
+}

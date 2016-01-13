@@ -10,13 +10,15 @@
 #define ThinningProcess_hpp
 
 
-#include <stdio.h>
+#include <iostream>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 using namespace cv;
+using namespace std;
 
 void thinningIteration(cv::Mat& img, int iter);
 void thinningImage(const cv::Mat& src, cv::Mat& dst);
+void saveThinningDataToFile(Mat, string);
 
 
 #endif /* ThinningProcess_hpp */
