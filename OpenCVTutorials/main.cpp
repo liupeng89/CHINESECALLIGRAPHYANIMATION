@@ -13,9 +13,9 @@
 //#include "ThinningProcess.hpp"
 //#include <GLUT/GLUT.h>
 //#include <math.h>
-#include "MlddleLineProcess.hpp"
-#include "ImageProcess.hpp"
-#include "EdgeDetection.hpp"
+//#include "MlddleLineProcess.hpp"
+//#include "ImageProcess.hpp"
+//#include "EdgeDetection.hpp"
 #include "Demo.hpp"
 using namespace std;
 
@@ -192,25 +192,25 @@ using namespace std;
 //}
 //
 // The image process function
-void imageProcess()
-{
-    Mat source, gray, edge;
-    source = loadImageFile(sourceImagePath);
-    gray = processImage(source);
-    edge = edgeDetection(gray);
-    
-    imshow("source", source);
-    imshow("gray", gray);
-    imshow("edge", edge);
-    
-//    saveEdgeData(edge);
-    saveEdgeDataToFile(edge);
-    
-//    waitKey(0);
-    source.release();
-    gray.release();
-    edge.release();
-}
+//void imageProcess()
+//{
+//    Mat source, gray, edge;
+//    source = loadImageFile(sourceImagePath);
+//    gray = processImage(source);
+//    edge = edgeDetection(gray);
+//    
+//    imshow("source", source);
+//    imshow("gray", gray);
+//    imshow("edge", edge);
+//    
+////    saveEdgeData(edge);
+//    saveEdgeDataToFile(edge);
+//    
+////    waitKey(0);
+//    source.release();
+//    gray.release();
+//    edge.release();
+//}
 
 ////The animation function
 //void animation(int argc, char** argv)
@@ -266,7 +266,7 @@ int main(int argc, char** argv) {
     /* The OpenGl function */
 //    animation(argc, argv);
     
-    demo();
+    demo(argc, argv);
     
     return 0;
 
