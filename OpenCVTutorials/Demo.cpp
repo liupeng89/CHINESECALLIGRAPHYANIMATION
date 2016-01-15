@@ -30,21 +30,21 @@ void init(){
     imshow("src", src);
     _width = src.cols;
     _height = src.rows;
-    int w = src.cols;
-    int h = src.rows;
-    imgVertex = (int*)malloc(_width * _height * sizeof(int));
-    
-    for (int x = 0; x < _width; x++) {
-        for (int y = 0; y < _height; y++) {
-            //
-            Scalar color = src.at<char>(y, x);
-            if (color.val[0] != 0) {
-                imgVertex[x * w + y] = 0;
-            }else {
-                imgVertex[x * w + y] = 1;
-            }
-        }
-    }
+//    int w = src.cols;
+//    int h = src.rows;
+//    imgVertex = (int*)malloc(_width * _height * sizeof(int));
+//    
+//    for (int x = 0; x < _width; x++) {
+//        for (int y = 0; y < _height; y++) {
+//            //
+//            Scalar color = src.at<char>(y, x);
+//            if (color.val[0] != 0) {
+//                imgVertex[x * w + y] = 0;
+//            }else {
+//                imgVertex[x * w + y] = 1;
+//            }
+//        }
+//    }
     
 //    for (int i = 0; i < w*h; i++) {
 //        // Check the image vertex
@@ -115,6 +115,31 @@ void init(){
         cout << " The trace point number is zero!" << endl;
     }
 }
+
+int *getImgColorVert(){
+    
+    int *vert;
+    Mat src = imageprocess(source);
+    int w = src.cols;
+    int h = src.rows;
+    vert = (int *)malloc(w * h * sizeof(int));
+    
+    for (int x = 0; x < w; x++) {
+        for (int y = 0; y < h; y++) {
+            //
+            Scalar color = src.at<char>(y, x);
+            if (color.val[0] != 0) {
+                vert[x * w + y] = 0;
+            }else {
+                vert[x * w + y] = 1;
+            }
+            cout << vert[x * w + y] << endl;
+        }
+    }
+    src.release();
+    return vert;
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 CAPoint *getEdgePoints(){
@@ -302,6 +327,9 @@ void demo(int argc, char** argv){
     
 
     init();
+    
+    imgVertex = getImgColorVert();
+    
     
     for (int i = 0; i < 900; i++) {
         cout << imgVertex[i] << endl;

@@ -33,6 +33,8 @@ Mat imageprocess(string);
 
 void init();
 
+int *getImgColorVert();
+
 CAPoint *getEdgePoints();
 CAPoint *getTracePoints();
 
