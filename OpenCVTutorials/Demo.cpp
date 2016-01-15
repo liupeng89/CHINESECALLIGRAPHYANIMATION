@@ -8,11 +8,13 @@
 
 #include "Demo.hpp"
 
-int _width = 0;
-int _height = 0;
+GLfloat _width = 0.0;
+GLfloat _height = 0.0;
 
-CAPoint *edgepoints;
-CAPoint *tracepoints;
+struct CAPoint *edgepoints;
+struct CAPoint *tracepoints;
+
+int *imgVertex;
 
 int _edgeLen = 0;
 int _traceLen = 0;
@@ -28,6 +30,26 @@ void init(){
     imshow("src", src);
     _width = src.cols;
     _height = src.rows;
+    int w = src.cols;
+    int h = src.rows;
+    imgVertex = (int*)malloc(_width * _height * sizeof(int));
+    
+    for (int x = 0; x < _width; x++) {
+        for (int y = 0; y < _height; y++) {
+            //
+            Scalar color = src.at<char>(y, x);
+            if (color.val[0] != 0) {
+                imgVertex[x * w + y] = 0;
+            }else {
+                imgVertex[x * w + y] = 1;
+            }
+        }
+    }
+    
+//    for (int i = 0; i < w*h; i++) {
+//        // Check the image vertex
+//        cout << imgVertex[i] << endl;
+//    }
     
     // 2. Edge detection
     Mat edge ;
@@ -47,7 +69,7 @@ void init(){
         for (int y = 0; y < _width; y++) {
             Scalar color = edge.at<char>(y, x);
             if (color.val[0] != 0) {
-                cout << "x:" << x << "," << "y:" << y << endl;
+//                cout << "x:" << x << "," << "y:" << y << endl;
                 fprintf(ofp, "%d %d\n", x, y);
                 _edgeLen++;
             }
@@ -55,10 +77,6 @@ void init(){
     }
     
     fclose(ofp);
-    
-    
-    //    saveEdgeDataToFile(edge, edgedatafile);
-    //    imshow("edge", edge);
     
     // 3. Trace Line detection
     Mat thinning;
@@ -93,67 +111,79 @@ void init(){
         return;
     }
     
-    if (_edgeLen == 0) {
+    if (_traceLen == 0) {
         cout << " The trace point number is zero!" << endl;
     }
-    /*
-     The edge function
-     */
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+CAPoint *getEdgePoints(){
     // Load the edge point data and animation
-    CAPoint _edgepoints[_edgeLen];
+    
+    CAPoint *_edgepoints = (CAPoint *)malloc(_edgeLen * sizeof(CAPoint));
     GLfloat _x, _y;
     
-    ofp = fopen(edgedatafile.c_str(), "r");
+    FILE *ofp = fopen(edgedatafile.c_str(), "r");
     int index = 0;
     while (fscanf(ofp, "%f %f", &_x, &_y) == 2) {
-        if (index >= _edgeLen) {
-            break;
-        }
         _edgepoints[index].x = _x;
         _edgepoints[index].y = _y;
         index++;
     }
     
     fclose(ofp);
+    return _edgepoints;
+}
+
+void getEdge(){
+//    edgepoints = (CAPoint *)malloc(_edgeLen);
+    GLfloat _x, _y;
     
-    edgepoints = _edgepoints;
-    
-    // Check the edge point
-    cout << "The edge point:" << endl;
-    
-    for (int i = 0; i < _edgeLen; i++) {
-        cout << "x:" << edgepoints[i].x << " y:" << edgepoints[i].y << endl;
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /*
-     The trace function
-     */
-    CAPoint _tracepoints[_traceLen];
-    
-    ofp = fopen(thinningdatafile.c_str(), "r");
-    index = 0;
+    FILE *ofp = fopen(edgedatafile.c_str(), "r");
+    int index = 0;
     while (fscanf(ofp, "%f %f", &_x, &_y) == 2) {
-        if (index >= _traceLen) {
-            break;
-        }
+        edgepoints[index].x = _x;
+        edgepoints[index].y = _y;
+        index++;
+    }
+    
+    fclose(ofp);
+}
+/////////////////////////////////////////////////////////
+CAPoint *getTracePoints(){
+    
+    CAPoint *_tracepoints = (CAPoint *)malloc(_traceLen * sizeof(CAPoint));
+    GLfloat _x, _y;
+    
+    FILE *ofp = fopen(thinningdatafile.c_str(), "r");
+    int index = 0;
+    while (fscanf(ofp, "%f %f", &_x, &_y) == 2) {
+        
         _tracepoints[index].x = _x;
         _tracepoints[index].y = _y;
         index++;
     }
     
     fclose(ofp);
-    
-    tracepoints = _tracepoints;
-    
-    // Check the trace point
-    cout << "The trace point:" << endl;
-    for (int i = 0; i < _traceLen; i++) {
-        cout << "x:" << tracepoints[i].x << " y: " << tracepoints[i].y << endl;
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+    return _tracepoints;
 }
+
+void getTrace(){
+//    tracepoints = (CAPoint *)malloc(_traceLen);
+    GLfloat _x, _y;
+    
+    FILE *ofp = fopen(thinningdatafile.c_str(), "r");
+    int index = 0;
+    while (fscanf(ofp, "%f %f", &_x, &_y) == 2) {
+        
+        tracepoints[index].x = _x;
+        tracepoints[index].y = _y;
+        index++;
+    }
+    
+    fclose(ofp);
+}
+
 /////////////////////////////////////////////////////////////////////////////
 Mat imageprocess(string source){
     Mat src;
@@ -177,19 +207,24 @@ bool raycasting(GLfloat x, GLfloat y, CAPoint *points, int length){
         return false;
     }
     int count = 0;
-    for (ptrdiff_t i = 0; i < length; i++) {
-        if (points[i].y == y && points[i].x != x) {
+    for (int i = 0; i < length; i++) {
+        if (points[i].y == y) {
             count++;
         }
     }
-    
-    if (count % 2 == 1) {
-        // Odd number, inside
+    cout << "count" << count << endl;
+//    if (count % 2 == 1) {
+//        // Odd number, inside
+//        return true;
+//    }
+//    // Even number, outsize
+//    return false;
+    if (count == 2) {
         return true;
     }
-    // Even number, outsize
     return false;
 }
+
 /////////////////////////////////////////////////////////////////////////////
 void draw(){
     if (_displayorder == _traceLen) {
@@ -198,8 +233,20 @@ void draw(){
     
     glColor3f(0.0, 0.0, 0.0);
     glBegin(GL_TRIANGLE_FAN);
+//    cout << "trace x:" << tracepoints[_displayorder].x << endl;
     
-    drawEllipse(tracepoints[_displayorder].x, tracepoints[_displayorder].y, 10.0/ _width, 10.0/_height);
+//    GLfloat x = tracepoints[_displayorder].x / _width;
+//    GLfloat y = 1.0 - tracepoints[_displayorder].y / _height;
+//    GLfloat ra = 100.0 /_height;
+//    GLfloat rb = 100.0 / _height;
+    
+    GLfloat x = tracepoints[_displayorder].x;
+    GLfloat y = tracepoints[_displayorder].y;
+    GLfloat ra = 10.0 ;
+    GLfloat rb = 5.0 ;
+
+    drawRect(x, y);
+//    drawEllipse(x, y, ra, rb);
     if (_displayorder < _traceLen) {
         _displayorder++;
         cout << "num:" << _displayorder << endl;
@@ -211,13 +258,28 @@ void draw(){
 void drawEllipse(GLfloat x,GLfloat y,GLfloat ra,GLfloat rb){
     for (GLfloat i = 0.0; i < 360.0; i+= 0.1) {
         GLfloat degInRad = i * DEG2RAD;
-        GLfloat _x = cos(degInRad) * ra + x;
-        GLfloat _y = sin(degInRad) * rb + y;
+        GLfloat _x = floor(cos(degInRad) * ra + x);
+        GLfloat _y = floor(sin(degInRad) * rb + y);
         //Check the coordiante
-//        if (raycasting(_x, _y, edgepoints, _edgeLen)) {
-//            glVertex2f(_x, _y);
-//        }
-        glVertex2f(_x, _y);
+        cout << "-- x:" << _x << "  " << _y << endl;
+        int vertindex = (int)_x * _width + _y;
+        if (imgVertex[vertindex] == 1) {
+            glVertex2f(_x / _width, 1- _y/_height);
+        }
+//        glVertex2f(_x, _y);
+    }
+}
+/////////////////////////////////////////////////////////////////////////////
+void drawRect(GLfloat x, GLfloat y){
+    for (int i = x - 20; i < x + 20; i++) {
+        for (int j = y - 20; j < y + 20; j++) {
+//            if (raycasting(i, j, edgepoints, _edgeLen)) {
+//                glVertex2f(i / _width, 1 - j / _height);
+//            }
+            if (imgVertex[(int)(x * _width + y)]) {
+                glVertex2f(i / _width, 1 - j / _height);
+            }
+        }
     }
 }
 /////////////////////////////////////////////////////////////////////////////
@@ -238,10 +300,36 @@ void demo(){
 
 void demo(int argc, char** argv){
     
+
     init();
     
+    for (int i = 0; i < 900; i++) {
+        cout << imgVertex[i] << endl;
+    }
+    
+//    edgepoints = (CAPoint *)malloc(_edgeLen * sizeof(CAPoint));
+//    tracepoints = (CAPoint *)malloc(_traceLen * sizeof(CAPoint));
+    
+    edgepoints = getEdgePoints();
+    
+    tracepoints = getTracePoints();
+//    getEdge();
+//    getTrace();
+    
+    // Check the edge data and trace data
+    cout << "Edge data" << endl;
+    for (int i = 0; i < _edgeLen; i++) {
+        cout << "x:" << edgepoints[i].x << " y:" << edgepoints[i].y << endl;
+    }
+    cout << " Trace data " << endl;
+    
+    for (int i = 0; i < _traceLen; i++) {
+        cout << "x: " << tracepoints[i].x << " y:" << tracepoints[i].y  << endl;
+    }
+    cout << "---------------------------------------" << endl;
     //Animation
     cout << "Animation begin:" << endl;
+    
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(_width, _height);
@@ -258,5 +346,4 @@ void demo(int argc, char** argv){
     Timer(0);
     glutMainLoop();
     
-
 }

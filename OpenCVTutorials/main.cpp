@@ -180,11 +180,7 @@ using namespace std;
 //
 ///* Initialize */
 //void Initialize() {
-//    glClearColor(1.0, 1.0, 1.0, 0.0);
-//    glMatrixMode(GL_PROJECTION);
-//    glLoadIdentity();
-//    glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
-//    glClear(GL_COLOR_BUFFER_BIT);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 //   
 //    // Init the paths
 //    initPath();

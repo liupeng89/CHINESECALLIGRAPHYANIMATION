@@ -26,16 +26,18 @@ const string thinningdatafile = "/Users/peterliu/Documents/openDevelopment/thinn
 
 const float DEG2RAD = 3.14159 / 180.0;
 
-
-
-
-
-const int _delay = 500; //Delay 5ms
+const int _delay = 100; //Delay 5ms
 
 
 Mat imageprocess(string);
 
 void init();
+
+CAPoint *getEdgePoints();
+CAPoint *getTracePoints();
+
+void getEdge();
+void getTrace();
 
 void demo();
 
@@ -44,6 +46,8 @@ bool raycasting(GLfloat,GLfloat,CAPoint[] , int);
 void draw();
 
 void drawEllipse(GLfloat,GLfloat,GLfloat,GLfloat);
+
+void drawRect(GLfloat, GLfloat);
 
 void Timer(int);
 
