@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/main.cpp \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/MlddleLineProcess.hpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/main.cpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/MlddleLineProcess.hpp \
   /usr/local/include/opencv2/opencv.hpp \
   /usr/local/include/opencv2/core.hpp \
   /usr/local/include/opencv2/core/cvdef.h \
@@ -52,7 +52,7 @@ dependencies: \
   /usr/local/include/opencv2/ml.hpp \
   /usr/local/include/opencv2/core/core.hpp \
   /usr/local/include/opencv2/highgui/highgui.hpp \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ThinningProcess.hpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/ThinningProcess.hpp \
   /usr/local/include/opencv2/imgproc/imgproc.hpp \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ImageProcess.hpp \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/EdgeDetection.hpp
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/ImageProcess.hpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/EdgeDetection.hpp
