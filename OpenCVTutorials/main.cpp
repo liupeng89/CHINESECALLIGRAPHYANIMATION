@@ -13,9 +13,10 @@
 //#include "ThinningProcess.hpp"
 //#include <GLUT/GLUT.h>
 //#include <math.h>
-#include "MlddleLineProcess.hpp"
-#include "ImageProcess.hpp"
-#include "EdgeDetection.hpp"
+//#include "MlddleLineProcess.hpp"
+//#include "ImageProcess.hpp"
+//#include "EdgeDetection.hpp"
+#include "Demo.hpp"
 using namespace std;
 
 //const int WindowWidth = 300;
@@ -179,11 +180,7 @@ using namespace std;
 //
 ///* Initialize */
 //void Initialize() {
-//    glClearColor(1.0, 1.0, 1.0, 0.0);
-//    glMatrixMode(GL_PROJECTION);
-//    glLoadIdentity();
-//    glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
-//    glClear(GL_COLOR_BUFFER_BIT);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 //   
 //    // Init the paths
 //    initPath();
@@ -191,24 +188,25 @@ using namespace std;
 //}
 //
 // The image process function
-void imageProcess()
-{
-    Mat source, gray, edge;
-    source = loadImageFile(sourceImagePath);
-    gray = processImage(source);
-    edge = edgeDetection(gray);
-    
-    imshow("source", source);
-    imshow("gray", gray);
-    imshow("edge", edge);
-    
-    saveEdgeData(edge);
-    
-//    waitKey(0);
-    source.release();
-    gray.release();
-    edge.release();
-}
+//void imageProcess()
+//{
+//    Mat source, gray, edge;
+//    source = loadImageFile(sourceImagePath);
+//    gray = processImage(source);
+//    edge = edgeDetection(gray);
+//    
+//    imshow("source", source);
+//    imshow("gray", gray);
+//    imshow("edge", edge);
+//    
+////    saveEdgeData(edge);
+//    saveEdgeDataToFile(edge);
+//    
+////    waitKey(0);
+//    source.release();
+//    gray.release();
+//    edge.release();
+//}
 
 ////The animation function
 //void animation(int argc, char** argv)
@@ -235,16 +233,36 @@ int main(int argc, char** argv) {
     // 1. Edge detection to get the edge data;
     // 2. The stroke model;
     // 3. The trace of stroke;
-    clock_t t1, t2;
-    t1 = clock();
-    imageProcess();
-    t2 = clock();
-    
-    float diff = (float) (t2 - t1) / CLOCKS_PER_SEC * 1000;
-    cout << "Running time:" << diff << "ms" << endl;
+//    clock_t t1, t2;
+//    t1 = clock();
+////    imageProcess();
+////    middleLine();
+//
+//    string image = "/Users/peterliu/Documents/openDevelopment/trace.png";
+//    Mat src = imread(image);
+//    cvtColor(src, src, CV_BGR2GRAY, 1);
+//    cout << "the channel:" << src.channels() << endl;
+//    
+//    imshow("Src", src);
+//    // Change black to white
+//    bitwise_not(src, src);
+//
+//    
+//    Mat thinning ;
+//    thinningImage(src, thinning);
+//    bitwise_not(thinning, thinning);
+//    imshow("Thinning ", thinning);
+//    waitKey(0);
+//    
+//    t2 = clock();
+//    
+//    float diff = (float) (t2 - t1) / CLOCKS_PER_SEC * 1000;
+//    cout << "Running time:" << diff << "ms" << endl;
     
     /* The OpenGl function */
 //    animation(argc, argv);
+    
+    demo(argc, argv);
     
     return 0;
 

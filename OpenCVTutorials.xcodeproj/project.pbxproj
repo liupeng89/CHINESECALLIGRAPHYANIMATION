@@ -12,8 +12,11 @@
 		642147021BE8CD8800C6EEAA /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642147011BE8CD8800C6EEAA /* GLUT.framework */; };
 		642147041BE8CEB200C6EEAA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642147031BE8CEB200C6EEAA /* OpenGL.framework */; };
 		642147441BEF154800C6EEAA /* MlddleLineProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642147421BEF154800C6EEAA /* MlddleLineProcess.cpp */; settings = {ASSET_TAGS = (); }; };
+		642C76261C463F970041A426 /* Demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642C76241C463F970041A426 /* Demo.cpp */; settings = {ASSET_TAGS = (); }; };
+		642C762B1C473C210041A426 /* GraphicStructure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642C76291C473C210041A426 /* GraphicStructure.cpp */; settings = {ASSET_TAGS = (); }; };
 		6435CBE81BDDC6F300B4076B /* FitCurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6435CBE61BDDC6F300B4076B /* FitCurve.cpp */; settings = {ASSET_TAGS = (); }; };
 		6435CBEC1BDDC73400B4076B /* ImgProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6435CBEA1BDDC73400B4076B /* ImgProcess.cpp */; settings = {ASSET_TAGS = (); }; };
+		644303791C4917EC002394DE /* InPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 644303771C4917EB002394DE /* InPolygon.cpp */; settings = {ASSET_TAGS = (); }; };
 		64803D461BCB84F9007FF94B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64803D451BCB84F9007FF94B /* main.cpp */; };
 		64A59D141C43735B008E8CFE /* ImageProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A59D121C43735B008E8CFE /* ImageProcess.cpp */; settings = {ASSET_TAGS = (); }; };
 		64B679DB1C43BC2F00EFFD18 /* EdgeDetection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64B679D91C43BC2F00EFFD18 /* EdgeDetection.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -39,10 +42,16 @@
 		642147031BE8CEB200C6EEAA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		642147421BEF154800C6EEAA /* MlddleLineProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MlddleLineProcess.cpp; sourceTree = "<group>"; };
 		642147431BEF154800C6EEAA /* MlddleLineProcess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MlddleLineProcess.hpp; sourceTree = "<group>"; };
+		642C76241C463F970041A426 /* Demo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Demo.cpp; sourceTree = "<group>"; };
+		642C76251C463F970041A426 /* Demo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Demo.hpp; sourceTree = "<group>"; };
+		642C76291C473C210041A426 /* GraphicStructure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicStructure.cpp; sourceTree = "<group>"; };
+		642C762A1C473C210041A426 /* GraphicStructure.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GraphicStructure.hpp; sourceTree = "<group>"; };
 		6435CBE61BDDC6F300B4076B /* FitCurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FitCurve.cpp; sourceTree = "<group>"; };
 		6435CBE71BDDC6F300B4076B /* FitCurve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FitCurve.hpp; sourceTree = "<group>"; };
 		6435CBEA1BDDC73400B4076B /* ImgProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImgProcess.cpp; sourceTree = "<group>"; };
 		6435CBEB1BDDC73400B4076B /* ImgProcess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImgProcess.hpp; sourceTree = "<group>"; };
+		644303771C4917EB002394DE /* InPolygon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InPolygon.cpp; sourceTree = "<group>"; };
+		644303781C4917EB002394DE /* InPolygon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InPolygon.hpp; sourceTree = "<group>"; };
 		64803D421BCB84F9007FF94B /* OpenCVTutorials */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenCVTutorials; sourceTree = BUILT_PRODUCTS_DIR; };
 		64803D451BCB84F9007FF94B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		64803D4D1BCB8809007FF94B /* LJin-0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "LJin-0.jpg"; path = "../LJin-0.jpg"; sourceTree = "<group>"; };
@@ -84,6 +93,24 @@
 			name = MiddleLineProcess;
 			sourceTree = "<group>";
 		};
+		642C76231C463F7E0041A426 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				642C76241C463F970041A426 /* Demo.cpp */,
+				642C76251C463F970041A426 /* Demo.hpp */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
+		642C76281C473BE80041A426 /* GraphicStructure */ = {
+			isa = PBXGroup;
+			children = (
+				642C76291C473C210041A426 /* GraphicStructure.cpp */,
+				642C762A1C473C210041A426 /* GraphicStructure.hpp */,
+			);
+			name = GraphicStructure;
+			sourceTree = "<group>";
+		};
 		6435CBE21BDDC56200B4076B /* FitCurve */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +129,15 @@
 				64A59D131C43735B008E8CFE /* ImageProcess.hpp */,
 			);
 			name = ImageProcess;
+			sourceTree = "<group>";
+		};
+		644303741C491780002394DE /* MathTool */ = {
+			isa = PBXGroup;
+			children = (
+				644303771C4917EB002394DE /* InPolygon.cpp */,
+				644303781C4917EB002394DE /* InPolygon.hpp */,
+			);
+			name = MathTool;
 			sourceTree = "<group>";
 		};
 		64803D391BCB84F9007FF94B = {
@@ -127,6 +163,9 @@
 		64803D441BCB84F9007FF94B /* OpenCVTutorials */ = {
 			isa = PBXGroup;
 			children = (
+				644303741C491780002394DE /* MathTool */,
+				642C76281C473BE80041A426 /* GraphicStructure */,
+				642C76231C463F7E0041A426 /* Demo */,
 				64B679D81C43BBF500EFFD18 /* EdgeDetection */,
 				642147411BEF152500C6EEAA /* MiddleLineProcess */,
 				642146FB1BE84BE500C6EEAA /* ThinningProcess */,
@@ -213,9 +252,12 @@
 				642147441BEF154800C6EEAA /* MlddleLineProcess.cpp in Sources */,
 				64A59D141C43735B008E8CFE /* ImageProcess.cpp in Sources */,
 				6435CBEC1BDDC73400B4076B /* ImgProcess.cpp in Sources */,
+				644303791C4917EC002394DE /* InPolygon.cpp in Sources */,
 				64B679DB1C43BC2F00EFFD18 /* EdgeDetection.cpp in Sources */,
 				64803D461BCB84F9007FF94B /* main.cpp in Sources */,
 				642146FE1BE84C0600C6EEAA /* ThinningProcess.cpp in Sources */,
+				642C762B1C473C210041A426 /* GraphicStructure.cpp in Sources */,
+				642C76261C463F970041A426 /* Demo.cpp in Sources */,
 				6435CBE81BDDC6F300B4076B /* FitCurve.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

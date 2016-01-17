@@ -23,6 +23,8 @@ using namespace std;
 const float ellipseRA = 5.0;
 
 const String imageSrc = "/Users/peterliu/Documents/openDevelopment/one.jpg";
+//const String imageSrc = "/Users/peterliu/Documents/openDevelopment/trace.png";
+
 const String pathTxt = "/Users/peterliu/Documents/openDevelopment/path.txt";
 
 //const String imageSrc = "/Users/heermaster/Documents/openDevelopment/one.jpg";

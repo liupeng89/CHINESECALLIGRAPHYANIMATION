@@ -24,28 +24,12 @@ dependencies: \
   /usr/local/include/opencv2/core/core_c.h \
   /usr/local/include/opencv2/core/types_c.h \
   /usr/local/include/opencv2/core/optim.hpp \
-  /usr/local/include/opencv2/imgproc.hpp \
   /usr/local/include/opencv2/imgproc/imgproc_c.h \
   /usr/local/include/opencv2/imgproc/types_c.h \
-  /usr/local/include/opencv2/photo.hpp \
-  /usr/local/include/opencv2/photo/photo_c.h \
-  /usr/local/include/opencv2/video.hpp \
-  /usr/local/include/opencv2/video/tracking.hpp \
-  /usr/local/include/opencv2/video/background_segm.hpp \
-  /usr/local/include/opencv2/video/tracking_c.h \
-  /usr/local/include/opencv2/features2d.hpp \
-  /usr/local/include/opencv2/flann/miniflann.hpp \
-  /usr/local/include/opencv2/flann/defines.h \
-  /usr/local/include/opencv2/flann/config.h \
-  /usr/local/include/opencv2/objdetect.hpp \
-  /usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
-  /usr/local/include/opencv2/objdetect/objdetect_c.h \
-  /usr/local/include/opencv2/calib3d.hpp \
-  /usr/local/include/opencv2/core/affine.hpp \
-  /usr/local/include/opencv2/calib3d/calib3d_c.h \
+  /usr/local/include/opencv2/highgui/highgui.hpp \
+  /usr/local/include/opencv2/highgui.hpp \
   /usr/local/include/opencv2/imgcodecs.hpp \
   /usr/local/include/opencv2/videoio.hpp \
-  /usr/local/include/opencv2/highgui.hpp \
   /usr/local/include/opencv2/highgui/highgui_c.h \
   /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
   /usr/local/include/opencv2/videoio/videoio_c.h \
