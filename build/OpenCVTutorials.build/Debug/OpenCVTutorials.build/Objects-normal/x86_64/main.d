@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/main.cpp \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/Demo.hpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/main.cpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/Demo.hpp \
   /usr/local/include/opencv2/imgproc/imgproc.hpp \
   /usr/local/include/opencv2/imgproc.hpp \
   /usr/local/include/opencv2/core.hpp \
@@ -34,6 +34,6 @@ dependencies: \
   /usr/local/include/opencv2/highgui/highgui_c.h \
   /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
   /usr/local/include/opencv2/videoio/videoio_c.h \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/EdgeDetection.hpp \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ThinningProcess.hpp \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/GraphicStructure.hpp
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/EdgeDetection.hpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/ThinningProcess.hpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/GraphicStructure.hpp
