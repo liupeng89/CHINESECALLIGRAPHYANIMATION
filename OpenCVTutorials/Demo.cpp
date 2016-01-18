@@ -15,10 +15,6 @@ struct CAPoint *edgepoints;
 struct CAPoint *tracepoints;
 int *imgVertex;
 
-//int *imgVertex;
-
-//int imgVertex[90000];
-
 int _edgeLen = 0;
 int _traceLen = 0;
 
@@ -258,27 +254,27 @@ void draw(){
     
     GLfloat x = tracepoints[_displayorder].x;
     GLfloat y = tracepoints[_displayorder].y;
-    GLfloat ra = 10.0 ;
-    GLfloat rb = 5.0 ;
+    GLfloat ra = 20.0 ;
+    GLfloat rb = 20.0 ;
 
-    drawRect(x, y);
-//    drawEllipse(x, y, ra, rb);
+//    drawRect(x, y);
+    drawEllipse(x, y, ra, rb);
     if (_displayorder < _traceLen) {
         _displayorder++;
-        cout << "num:" << _displayorder << endl;
+//        cout << "num:" << _displayorder << endl;
     }
     glEnd();
     glFlush();
 }
 /////////////////////////////////////////////////////////////////////////////
 void drawEllipse(GLfloat x,GLfloat y,GLfloat ra,GLfloat rb){
-    for (GLfloat i = 0.0; i < 360.0; i+= 0.1) {
+    for (GLfloat i = 0.0; i < 360.0; i+= 0.2) {
         GLfloat degInRad = i * DEG2RAD;
         GLfloat _x = floor(cos(degInRad) * ra + x);
         GLfloat _y = floor(sin(degInRad) * rb + y);
         //Check the coordiante
-        cout << "-- x:" << _x << "  " << _y << endl;
-        int vertindex = (int)_x * _width + _y;
+//        cout << "-- x:" << _x << "  " << _y << endl;
+        int vertindex = (int)_x * _height + _y;
         if (imgVertex[vertindex] == 1) {
             glVertex2f(_x / _width, 1- _y/_height);
         }
@@ -286,13 +282,11 @@ void drawEllipse(GLfloat x,GLfloat y,GLfloat ra,GLfloat rb){
     }
 }
 /////////////////////////////////////////////////////////////////////////////
+// Draw the rectangle
 void drawRect(GLfloat x, GLfloat y){
     for (int i = x - 20; i < x + 20; i++) {
         for (int j = y - 20; j < y + 20; j++) {
-//            if (raycasting(i, j, edgepoints, _edgeLen)) {
-//                glVertex2f(i / _width, 1 - j / _height);
-//            }
-            if (imgVertex[(int)(x * _height + y)] == 1) {
+            if (imgVertex[(int)(i * _height + j)] == 1) {
                 glVertex2f(i / _width, 1 - j / _height);
             }
         }
@@ -320,24 +314,6 @@ void demo(int argc, char** argv){
     init();
     // The gray color vertex
     imgVertex = getImgColorVert();
-    
-//    Mat src = imageprocess(source);
-//    int w = src.cols;
-//    int h = src.rows;
-////    int *vert = (int *)malloc(w * h * sizeof(int));
-//
-//    for (int x = 0; x < w; x++) {
-//        for (int y = 0; y < h; y++) {
-//            //
-//            Scalar color = src.at<char>(y, x);
-//            if (color.val[0] != 0) {
-//                imgVertex[x * w + y] = 0;
-//            }else {
-//                imgVertex[x * w + y] = 1;
-//               
-//            }
-//        }
-//    }
 
     int count = 0;
     for (int i = 0; i < 90000; i++) {

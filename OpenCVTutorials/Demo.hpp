@@ -20,13 +20,13 @@ using namespace cv;
 using namespace std;
 
 
-//const string source = "/Users/peterliu/Documents/openDevelopment/one.png";
-//const string edgedatafile = "/Users/peterliu/Documents/openDevelopment/edgeData.txt";
-//const string thinningdatafile = "/Users/peterliu/Documents/openDevelopment/thinningData.txt";
+const string source = "/Users/peterliu/Documents/openDevelopment/one.png";
+const string edgedatafile = "/Users/peterliu/Documents/openDevelopment/edgeData.txt";
+const string thinningdatafile = "/Users/peterliu/Documents/openDevelopment/thinningData.txt";
 
-const string source = "/Users/heermaster/Documents/openDevelopment/one.jpg";
-const string edgedatafile = "/Users/heermaster/Documents/openDevelopment/edgeData.txt";
-const string thinningdatafile = "/Users/heermaster/Documents/openDevelopment/thinningData.txt";
+//const string source = "/Users/heermaster/Documents/openDevelopment/one.jpg";
+//const string edgedatafile = "/Users/heermaster/Documents/openDevelopment/edgeData.txt";
+//const string thinningdatafile = "/Users/heermaster/Documents/openDevelopment/thinningData.txt";
 
 extern struct CAPoint *edgepoints;
 extern struct CAPoint *tracepoints;
@@ -38,7 +38,7 @@ extern int *imgVertex;
 
 const float DEG2RAD = 3.14159 / 180.0;
 
-const int _delay = 100; //Delay 5ms
+const int _delay = 5; //Delay 5ms
 
 Mat imageprocess(string);
 
