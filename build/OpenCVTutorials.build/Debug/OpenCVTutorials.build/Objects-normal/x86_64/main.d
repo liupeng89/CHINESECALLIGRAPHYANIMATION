@@ -1,7 +1,8 @@
 dependencies: \
   /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/main.cpp \
-  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/MlddleLineProcess.hpp \
-  /usr/local/include/opencv2/opencv.hpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/Demo.hpp \
+  /usr/local/include/opencv2/imgproc/imgproc.hpp \
+  /usr/local/include/opencv2/imgproc.hpp \
   /usr/local/include/opencv2/core.hpp \
   /usr/local/include/opencv2/core/cvdef.h \
   /usr/local/include/opencv2/hal/defs.h \
@@ -33,10 +34,6 @@ dependencies: \
   /usr/local/include/opencv2/highgui/highgui_c.h \
   /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
   /usr/local/include/opencv2/videoio/videoio_c.h \
-  /usr/local/include/opencv2/ml.hpp \
-  /usr/local/include/opencv2/core/core.hpp \
-  /usr/local/include/opencv2/highgui/highgui.hpp \
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/EdgeDetection.hpp \
   /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/ThinningProcess.hpp \
-  /usr/local/include/opencv2/imgproc/imgproc.hpp \
-  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/ImageProcess.hpp \
-  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/EdgeDetection.hpp
+  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/GraphicStructure.hpp

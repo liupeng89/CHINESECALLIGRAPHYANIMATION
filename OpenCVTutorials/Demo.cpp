@@ -13,8 +13,11 @@ GLfloat _height = 0.0;
 
 struct CAPoint *edgepoints;
 struct CAPoint *tracepoints;
-
 int *imgVertex;
+
+//int *imgVertex;
+
+//int imgVertex[90000];
 
 int _edgeLen = 0;
 int _traceLen = 0;
@@ -30,26 +33,6 @@ void init(){
     imshow("src", src);
     _width = src.cols;
     _height = src.rows;
-//    int w = src.cols;
-//    int h = src.rows;
-//    imgVertex = (int*)malloc(_width * _height * sizeof(int));
-//    
-//    for (int x = 0; x < _width; x++) {
-//        for (int y = 0; y < _height; y++) {
-//            //
-//            Scalar color = src.at<char>(y, x);
-//            if (color.val[0] != 0) {
-//                imgVertex[x * w + y] = 0;
-//            }else {
-//                imgVertex[x * w + y] = 1;
-//            }
-//        }
-//    }
-    
-//    for (int i = 0; i < w*h; i++) {
-//        // Check the image vertex
-//        cout << imgVertex[i] << endl;
-//    }
     
     // 2. Edge detection
     Mat edge ;
@@ -114,28 +97,36 @@ void init(){
     if (_traceLen == 0) {
         cout << " The trace point number is zero!" << endl;
     }
+    
+    src.release();
+    edge.release();
+    thinning.release();
 }
-
+// Get the gray vertex
 int *getImgColorVert(){
     
-    int *vert;
     Mat src = imageprocess(source);
+//    cout << src.channels() << endl;
     int w = src.cols;
     int h = src.rows;
-    vert = (int *)malloc(w * h * sizeof(int));
-    
+    int *vert = (int *)malloc((w * h )* sizeof(int));
+    int count = 0;
     for (int x = 0; x < w; x++) {
         for (int y = 0; y < h; y++) {
             //
-            Scalar color = src.at<char>(y, x);
+            Scalar color = src.at<uchar>(y, x);
+//            cout << color.val[0] << endl;
             if (color.val[0] != 0) {
-                vert[x * w + y] = 0;
+                vert[x * h + y] = 0;
             }else {
-                vert[x * w + y] = 1;
+                vert[x * h + y] = 1;
+                count++;
             }
-            cout << vert[x * w + y] << endl;
         }
     }
+    
+    cout << "the gray count num" << count << endl;
+    
     src.release();
     return vert;
 }
@@ -301,7 +292,7 @@ void drawRect(GLfloat x, GLfloat y){
 //            if (raycasting(i, j, edgepoints, _edgeLen)) {
 //                glVertex2f(i / _width, 1 - j / _height);
 //            }
-            if (imgVertex[(int)(x * _width + y)]) {
+            if (imgVertex[(int)(x * _height + y)] == 1) {
                 glVertex2f(i / _width, 1 - j / _height);
             }
         }
@@ -325,15 +316,37 @@ void demo(){
 
 void demo(int argc, char** argv){
     
-
+    // 1. Init all data
     init();
-    
+    // The gray color vertex
     imgVertex = getImgColorVert();
     
-    
-    for (int i = 0; i < 900; i++) {
-        cout << imgVertex[i] << endl;
+//    Mat src = imageprocess(source);
+//    int w = src.cols;
+//    int h = src.rows;
+////    int *vert = (int *)malloc(w * h * sizeof(int));
+//
+//    for (int x = 0; x < w; x++) {
+//        for (int y = 0; y < h; y++) {
+//            //
+//            Scalar color = src.at<char>(y, x);
+//            if (color.val[0] != 0) {
+//                imgVertex[x * w + y] = 0;
+//            }else {
+//                imgVertex[x * w + y] = 1;
+//               
+//            }
+//        }
+//    }
+
+    int count = 0;
+    for (int i = 0; i < 90000; i++) {
+        if (imgVertex[i] == 1) {
+            count++;
+        }
+//        cout << imgVertex[i] << endl;
     }
+    cout << "The count:" << count << endl;
     
 //    edgepoints = (CAPoint *)malloc(_edgeLen * sizeof(CAPoint));
 //    tracepoints = (CAPoint *)malloc(_traceLen * sizeof(CAPoint));
@@ -345,15 +358,15 @@ void demo(int argc, char** argv){
 //    getTrace();
     
     // Check the edge data and trace data
-    cout << "Edge data" << endl;
-    for (int i = 0; i < _edgeLen; i++) {
-        cout << "x:" << edgepoints[i].x << " y:" << edgepoints[i].y << endl;
-    }
-    cout << " Trace data " << endl;
-    
-    for (int i = 0; i < _traceLen; i++) {
-        cout << "x: " << tracepoints[i].x << " y:" << tracepoints[i].y  << endl;
-    }
+//    cout << "Edge data" << endl;
+//    for (int i = 0; i < _edgeLen; i++) {
+//        cout << "x:" << edgepoints[i].x << " y:" << edgepoints[i].y << endl;
+//    }
+//    cout << " Trace data " << endl;
+//    
+//    for (int i = 0; i < _traceLen; i++) {
+//        cout << "x: " << tracepoints[i].x << " y:" << tracepoints[i].y  << endl;
+//    }
     cout << "---------------------------------------" << endl;
     //Animation
     cout << "Animation begin:" << endl;
@@ -374,4 +387,7 @@ void demo(int argc, char** argv){
     Timer(0);
     glutMainLoop();
     
+    free(imgVertex);
+    free(edgepoints);
+    free(tracepoints);
 }
