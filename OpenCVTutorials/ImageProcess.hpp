@@ -28,6 +28,8 @@ const int GAUSSIANTHRESHOLD = 0.5;
 
 // Edge detection function
 
+Mat loadImageFile(String);
+
 Mat processImage(Mat); // Process image---gray, denoise and filter.
 
 

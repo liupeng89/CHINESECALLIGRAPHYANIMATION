@@ -46,7 +46,7 @@ void init(){
     
     for (int x = 0; x < _height; x++) {
         for (int y = 0; y < _width; y++) {
-            Scalar color = edge.at<char>(y, x);
+            Scalar color = edge.at<uchar>(y, x);
             if (color.val[0] != 0) {
                 fprintf(ofp, "%d %d\n", x, y);
                 _edgeLen++;
@@ -72,7 +72,7 @@ void init(){
     for (int x = 0; x < _width; x++) {
         for (int y = 0; y < _height; y++) {
             // save the data.
-            Scalar color = thinning.at<char>(y, x);
+            Scalar color = thinning.at<uchar>(y, x);
             if (color.val[0] != 0) {
                 // white point save
                 fprintf(ofp, "%d %d\n", x, y);

@@ -1,0 +1,37 @@
+Chinese Calligraphic Animation Project!!!
+
+
+2016-01-18
+    Animation 方式主要有两种：
+1. 边界填充的方式；
+2. 揭白显示的方式；
+
+    其中，揭白的方式的主要流程：
+
+    （1）拆笔画；
+    （2）提取笔画的边界；
+    （3）对边界放大，使其略大于原有的图片边界；
+    （4）提取轨迹，并对轨迹进行修正，使其符合现有的书法书写轨迹；
+    （5）对笔触进行建模，形状等能够跟进具体的情况进行动态调整；
+    （6）沿着轨迹进行绘制，作为最终的现实效果；
+
+现在需解决的问题：
+    1. bezier curve 绘制；
+    2. 边界的扩大－－ dilation or erosion；
+    3. 轨迹的提取和修正，主要是将笔画切分成：开头， 中间 和 结束，然后根据不同的部位做相应的修正；
+    4. 笔触建模；
+
+2016-01-19
+
+The problems need to resolved!
+
+1.The scaled edge function.
+
+
+The openGL function need data:
+
+    1. the edge data points;
+    2. the scaled edge data points;
+    3. the fixed trace points;
+
+

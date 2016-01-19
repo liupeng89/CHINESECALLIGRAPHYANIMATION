@@ -20,6 +20,7 @@
 		64A59D141C43735B008E8CFE /* ImageProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A59D121C43735B008E8CFE /* ImageProcess.cpp */; };
 		64B679DB1C43BC2F00EFFD18 /* EdgeDetection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64B679D91C43BC2F00EFFD18 /* EdgeDetection.cpp */; };
 		E5BA1F3A1C4C81E300C7968E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5BA1F391C4C81E300C7968E /* main.cpp */; };
+		E5BA1F3E1C4D3C0600C7968E /* EdgeScale.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5BA1F3C1C4D3C0600C7968E /* EdgeScale.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,6 +60,9 @@
 		64B679D91C43BC2F00EFFD18 /* EdgeDetection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeDetection.cpp; sourceTree = "<group>"; };
 		64B679DA1C43BC2F00EFFD18 /* EdgeDetection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EdgeDetection.hpp; sourceTree = "<group>"; };
 		E5BA1F391C4C81E300C7968E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E5BA1F3C1C4D3C0600C7968E /* EdgeScale.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeScale.cpp; sourceTree = "<group>"; };
+		E5BA1F3D1C4D3C0600C7968E /* EdgeScale.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EdgeScale.hpp; sourceTree = "<group>"; };
+		E5BA1F401C4D3E6B00C7968E /* ProjectWiki */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ProjectWiki; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,9 @@
 		64803D441BCB84F9007FF94B /* OpenCVTutorials */ = {
 			isa = PBXGroup;
 			children = (
+				E51990681C4DD9D3001F7641 /* Test */,
+				E5BA1F3F1C4D3E3C00C7968E /* config */,
+				E5BA1F3B1C4D3BEA00C7968E /* EdgeScale */,
 				644303741C491780002394DE /* MathTool */,
 				642C76281C473BE80041A426 /* GraphicStructure */,
 				642C76231C463F7E0041A426 /* Demo */,
@@ -191,6 +198,30 @@
 				64B679DA1C43BC2F00EFFD18 /* EdgeDetection.hpp */,
 			);
 			name = EdgeDetection;
+			sourceTree = "<group>";
+		};
+		E51990681C4DD9D3001F7641 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
+		E5BA1F3B1C4D3BEA00C7968E /* EdgeScale */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA1F3C1C4D3C0600C7968E /* EdgeScale.cpp */,
+				E5BA1F3D1C4D3C0600C7968E /* EdgeScale.hpp */,
+			);
+			name = EdgeScale;
+			sourceTree = "<group>";
+		};
+		E5BA1F3F1C4D3E3C00C7968E /* config */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA1F401C4D3E6B00C7968E /* ProjectWiki */,
+			);
+			name = config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +284,7 @@
 				64A59D141C43735B008E8CFE /* ImageProcess.cpp in Sources */,
 				6435CBEC1BDDC73400B4076B /* ImgProcess.cpp in Sources */,
 				644303791C4917EC002394DE /* InPolygon.cpp in Sources */,
+				E5BA1F3E1C4D3C0600C7968E /* EdgeScale.cpp in Sources */,
 				E5BA1F3A1C4C81E300C7968E /* main.cpp in Sources */,
 				64B679DB1C43BC2F00EFFD18 /* EdgeDetection.cpp in Sources */,
 				642146FE1BE84C0600C6EEAA /* ThinningProcess.cpp in Sources */,
