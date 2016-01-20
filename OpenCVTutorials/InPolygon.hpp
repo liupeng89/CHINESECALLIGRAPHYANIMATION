@@ -8,7 +8,14 @@
 
 #ifndef InPolygon_hpp
 #define InPolygon_hpp
+#include <iostream>
+#include "FitCurve.hpp"
+#include <math.h>
+using namespace std;
 
-#include <stdio.h>
+#define MAXINFINATE 32768
+
+Point2 *sortPoints(Point2 *, int);
+
 
 #endif /* InPolygon_hpp */

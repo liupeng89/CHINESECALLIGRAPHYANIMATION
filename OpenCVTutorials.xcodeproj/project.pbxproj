@@ -17,6 +17,8 @@
 		6435CBE81BDDC6F300B4076B /* FitCurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6435CBE61BDDC6F300B4076B /* FitCurve.cpp */; };
 		6435CBEC1BDDC73400B4076B /* ImgProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6435CBEA1BDDC73400B4076B /* ImgProcess.cpp */; };
 		644303791C4917EC002394DE /* InPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 644303771C4917EB002394DE /* InPolygon.cpp */; };
+		64A581F21C4E0C1900A08D10 /* Test01.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A581F01C4E0C1900A08D10 /* Test01.cpp */; settings = {ASSET_TAGS = (); }; };
+		64A581F51C4E0EE700A08D10 /* MainProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A581F31C4E0EE700A08D10 /* MainProcess.cpp */; settings = {ASSET_TAGS = (); }; };
 		64A59D141C43735B008E8CFE /* ImageProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A59D121C43735B008E8CFE /* ImageProcess.cpp */; };
 		64B679DB1C43BC2F00EFFD18 /* EdgeDetection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64B679D91C43BC2F00EFFD18 /* EdgeDetection.cpp */; };
 		E5BA1F3A1C4C81E300C7968E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5BA1F391C4C81E300C7968E /* main.cpp */; };
@@ -55,6 +57,10 @@
 		644303781C4917EB002394DE /* InPolygon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InPolygon.hpp; sourceTree = "<group>"; };
 		64803D421BCB84F9007FF94B /* OpenCVTutorials */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenCVTutorials; sourceTree = BUILT_PRODUCTS_DIR; };
 		64803D4D1BCB8809007FF94B /* LJin-0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "LJin-0.jpg"; path = "../LJin-0.jpg"; sourceTree = "<group>"; };
+		64A581F01C4E0C1900A08D10 /* Test01.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Test01.cpp; sourceTree = "<group>"; };
+		64A581F11C4E0C1900A08D10 /* Test01.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Test01.hpp; sourceTree = "<group>"; };
+		64A581F31C4E0EE700A08D10 /* MainProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainProcess.cpp; sourceTree = "<group>"; };
+		64A581F41C4E0EE700A08D10 /* MainProcess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainProcess.hpp; sourceTree = "<group>"; };
 		64A59D121C43735B008E8CFE /* ImageProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageProcess.cpp; sourceTree = "<group>"; };
 		64A59D131C43735B008E8CFE /* ImageProcess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImageProcess.hpp; sourceTree = "<group>"; };
 		64B679D91C43BC2F00EFFD18 /* EdgeDetection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeDetection.cpp; sourceTree = "<group>"; };
@@ -102,6 +108,8 @@
 			children = (
 				642C76241C463F970041A426 /* Demo.cpp */,
 				642C76251C463F970041A426 /* Demo.hpp */,
+				64A581F31C4E0EE700A08D10 /* MainProcess.cpp */,
+				64A581F41C4E0EE700A08D10 /* MainProcess.hpp */,
 			);
 			name = Demo;
 			sourceTree = "<group>";
@@ -203,6 +211,8 @@
 		E51990681C4DD9D3001F7641 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				64A581F01C4E0C1900A08D10 /* Test01.cpp */,
+				64A581F11C4E0C1900A08D10 /* Test01.hpp */,
 			);
 			name = Test;
 			sourceTree = "<group>";
@@ -285,9 +295,11 @@
 				6435CBEC1BDDC73400B4076B /* ImgProcess.cpp in Sources */,
 				644303791C4917EC002394DE /* InPolygon.cpp in Sources */,
 				E5BA1F3E1C4D3C0600C7968E /* EdgeScale.cpp in Sources */,
+				64A581F51C4E0EE700A08D10 /* MainProcess.cpp in Sources */,
 				E5BA1F3A1C4C81E300C7968E /* main.cpp in Sources */,
 				64B679DB1C43BC2F00EFFD18 /* EdgeDetection.cpp in Sources */,
 				642146FE1BE84C0600C6EEAA /* ThinningProcess.cpp in Sources */,
+				64A581F21C4E0C1900A08D10 /* Test01.cpp in Sources */,
 				642C762B1C473C210041A426 /* GraphicStructure.cpp in Sources */,
 				642C76261C463F970041A426 /* Demo.cpp in Sources */,
 				6435CBE81BDDC6F300B4076B /* FitCurve.cpp in Sources */,

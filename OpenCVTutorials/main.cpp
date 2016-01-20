@@ -18,11 +18,13 @@
 //#include "ImageProcess.hpp"
 //#include "EdgeDetection.hpp"
 #include "Demo.hpp"
+#include "Test01.hpp"
 using namespace std;
 
 int main(int argc, char** argv) {
     
-    demo(argc, argv);
+//    demo(argc, argv);
+    test();
     
     return 0;
 }

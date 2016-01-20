@@ -38,7 +38,7 @@ Mat erosionFunc(Mat original, int erosion_size, int erosion_type){
     original.copyTo(eroded);
     
     int _type ;
-    
+    // Erosion type
     if (erosion_type == 0) {
         _type = MORPH_RECT;
     } else if(erosion_type == 1){

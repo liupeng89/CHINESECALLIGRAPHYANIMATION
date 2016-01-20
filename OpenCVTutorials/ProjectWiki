@@ -34,4 +34,8 @@ The openGL function need data:
     2. the scaled edge data points;
     3. the fixed trace points;
 
+The point coordinate bezier curve to bitmap!
+
+no-order points to order points -- paths
+
 
