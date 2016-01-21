@@ -41,4 +41,5 @@ dependencies: \
   /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/EdgeScale.hpp \
   /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/GraphicStructure.cpp \
   /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/ImageProcess.hpp \
-  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/FitCurve.hpp
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/FitCurve.hpp \
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/InPolygon.hpp

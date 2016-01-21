@@ -53,16 +53,51 @@ void test(){
         }
     }
     
+    //Sorted the edge points
+    Point2 *sortedPoints = sortPoints(scaledEdgePoints, edgenum);
+    
+    
+    
+    // Modify the error point  0<= x1-x0 <=1 and 0<= y1-y0<=1
+//    for (int i = 1; i < edgenum; i++) {
+//        //
+//        if ((0<= abs(sortedPoints[i-1].x-sortedPoints[i].x) && 1>= abs(sortedPoints[i-1].x - sortedPoints[i].x))&&(0<= abs(sortedPoints[i-1].y-sortedPoints[i].y) && 1>= abs(sortedPoints[i-1].y - sortedPoints[i].y))) {
+//            
+//        }else{
+//            sortedPoints[i].x = sortedPoints[i-1].x;
+//            sortedPoints[i].y = sortedPoints[i-1].y;
+//        }
+//    }
+    
+    for (int i = 0; i < edgenum; i++) {
+        cout << sortedPoints[i].x << " " << sortedPoints[i].y  << endl;
+    }
+    
     // Check the scaled edge points
 //    for (int i = 0; i < edgenum; i++) {
 //        cout << scaledEdgePoints[i].x << " " << scaledEdgePoints[i].y << endl;
 //    }
     cout << "===Bezier Curve Fitting Function===" << endl;
-    FitCurve(scaledEdgePoints, edgenum, 0.1);
     
     
-    imshow("Erosion ", edge);
-    imshow("src", src);
+//    FitCurve(sortedPoints, edgenum, 4.0);
+//
+//    
+//    imshow("Erosion ", edge);
+//    imshow("src", src);
+    
+    Point2 d[7] = {	/*  Digitized points */
+        { 0.0, 0.0 },
+        { 0.0, 0.5 },
+        { 1.1, 1.4 },
+        { 2.1, 1.6 },
+        { 3.2, 1.1 },
+        { 4.0, 0.2 },
+        { 4.0, 0.0 },
+    };
+    double error = 4.0;
+    FitCurve(d, 7, error);
+    
     waitKey(0);
     
     src.release();

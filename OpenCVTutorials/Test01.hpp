@@ -14,6 +14,7 @@
 #include "ImageProcess.hpp"
 #include "EdgeDetection.hpp"
 #include "FitCurve.hpp"
+#include "InPolygon.hpp"
 
 using namespace cv;
 using namespace std;

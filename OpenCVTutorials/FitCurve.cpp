@@ -14,7 +14,7 @@ void DrawBezierCurve(int n, BezierCurve curve){
     /* Determine the method of draw the Bezier Curve */
 //    cout<< curve[2].x << endl;
     int index = 0;
-    while (curve[index].x >= 1.0 && curve[index].x <= 300) {
+    while (curve[index].x >= 0.0 && curve[index].x <= 300) {
         cout << "Index: " << index << "  " << curve[index].x << " " << curve[index].y << endl;
         index++;
     }

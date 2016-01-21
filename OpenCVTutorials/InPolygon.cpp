@@ -15,7 +15,7 @@ Point2 *sortPoints(Point2 *unsorted, int len){
         cout << "The points len is zero" << endl;
         return sorted;
     }
-    
+    cout << "len:" << len << endl;
     // Copy the points data.
     tmp = (Point2 *)malloc(len * sizeof(Point2));
     sorted = (Point2 *)malloc(len * sizeof(Point2));
@@ -24,40 +24,53 @@ Point2 *sortPoints(Point2 *unsorted, int len){
         //
         tmp[i].x = unsorted[i].x;
         tmp[i].y = unsorted[i].y;
+        cout << unsorted[i].x << " " << unsorted[i].y << endl;
     }
     
     // Strat point
     
     int count = 0;
-    Point2 start = tmp[count];
-    sorted[count].x = start.x;
-    sorted[count].y = start.y;
-    
-    double distance = sqrt((start.x - tmp[1].x) * (start.x - tmp[1].x) + (start.y - tmp[1].y) * (start.y - tmp[1].y));
     
     int index = 0;
+
+    int pre = 0;
     while (count < len) {
-        // new start point
-        start = tmp[index];
+        // start point
+        Point2 start = unsorted[index];
+        pre = index;
+        double distance = MAXINFINATE;
         for (int i = 0; i < len; i++) {
             //
             double dis = sqrt((start.x - tmp[i].x) * (start.x - tmp[i].x) + (start.y - tmp[i].y) * (start.y - tmp[i].y));
+            if (dis == 0 || dis >= MAXINFINATE) {
+                continue;
+            }
             if (dis < distance) {
-                // Get the min distance.
-
                 distance = dis;
-                if (i == len - 1) {
-                    tmp[index].x = MAXINFINATE;
-                    tmp[index].y = MAXINFINATE;
-                    index = i;
-                    sorted[count].x = tmp[i].x;
-                    sorted[count].y = tmp[i].y;
-                }
+                
+                index = i;
+            }
+            if (i == len - 1) {
+                // get the min distance
+                sorted[count].x = unsorted[pre].x;
+                sorted[count].y = unsorted[pre].y;
+                tmp[pre].x = MAXINFINATE;
+                tmp[pre].y = MAXINFINATE;
+                
+                cout << "count:" << count << " " << sorted[count].x << endl;
             }
         }
         count++;
     }
     
+    
     free(tmp);
+    
+    // Check the result
+    cout << "The sorted result:" << endl;
+    for (int i = 0; i < len; i++) {
+        cout << sorted[i].x << " " << sorted[i].y << endl;
+    }
+    
     return sorted;
 }
