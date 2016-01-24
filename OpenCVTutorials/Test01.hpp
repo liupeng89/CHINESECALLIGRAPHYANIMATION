@@ -15,6 +15,8 @@
 #include "EdgeDetection.hpp"
 #include "FitCurve.hpp"
 #include "InPolygon.hpp"
+#include "EnvmConfig.h"
+
 
 using namespace cv;
 using namespace std;

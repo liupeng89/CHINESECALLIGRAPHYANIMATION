@@ -12,13 +12,10 @@
 Mat loadImageFile(String path)
 {
     // Load the source file
-    Mat source = imread(sourceImagePath);
+    Mat source = imread(path);
     if (source.empty()) {
         cout << "Source image file is empty!" << endl;
     }
-    
-    
-
     return source;
 }
 
@@ -40,7 +37,6 @@ Mat processImage(Mat source)
     // Gray the image file
     cvtColor(gray, gray, CV_BGR2GRAY);
     threshold(gray, gray, grayThreshold, 255, CV_THRESH_BINARY);
-    
     
     return gray;
 }
