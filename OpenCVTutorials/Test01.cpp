@@ -65,6 +65,12 @@ void test(){
     
     cout << "===Bezier Curve Fitting Function===" << endl;
     
+    //Detection the corner points and split the polygon to segment to bezier curve fitting.
+    for (int i = 0; i < edgenum; i++) {
+        // Get all corner points' index
+        
+    }
+    
     
 //    FitCurve(sortedPoints, edgenum, 4.0);
 //
