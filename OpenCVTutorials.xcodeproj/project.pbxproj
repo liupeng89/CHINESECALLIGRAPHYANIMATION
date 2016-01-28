@@ -65,6 +65,7 @@
 		64A59D131C43735B008E8CFE /* ImageProcess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImageProcess.hpp; sourceTree = "<group>"; };
 		64B679D91C43BC2F00EFFD18 /* EdgeDetection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeDetection.cpp; sourceTree = "<group>"; };
 		64B679DA1C43BC2F00EFFD18 /* EdgeDetection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EdgeDetection.hpp; sourceTree = "<group>"; };
+		64EB02EC1C5A3F350038C7BD /* EnvmConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnvmConfig.h; sourceTree = "<group>"; };
 		E5BA1F391C4C81E300C7968E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E5BA1F3C1C4D3C0600C7968E /* EdgeScale.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeScale.cpp; sourceTree = "<group>"; };
 		E5BA1F3D1C4D3C0600C7968E /* EdgeScale.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EdgeScale.hpp; sourceTree = "<group>"; };
@@ -229,6 +230,7 @@
 		E5BA1F3F1C4D3E3C00C7968E /* config */ = {
 			isa = PBXGroup;
 			children = (
+				64EB02EC1C5A3F350038C7BD /* EnvmConfig.h */,
 				E5BA1F401C4D3E6B00C7968E /* ProjectWiki */,
 			);
 			name = config;
