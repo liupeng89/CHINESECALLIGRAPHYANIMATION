@@ -11,6 +11,14 @@
 
 #include <iostream>
 
+#include "ImageProcess.hpp"
+#include "ThinningProcess.hpp"
+#include "EdgeDetection.hpp"
+#include "InPolygon.hpp"
+#include "EnvmConfig.h"
+
+
+using namespace cv;
 using namespace std;
 
 void process(int, char**); // The opengl function: the graphic drawing;

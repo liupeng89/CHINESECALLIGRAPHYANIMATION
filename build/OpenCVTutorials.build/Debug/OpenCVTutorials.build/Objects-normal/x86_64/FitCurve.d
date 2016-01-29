@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/FitCurve.cpp \
-  /Users/heermaster/Documents/iOS\ Development/OpenCVTutorials/OpenCVTutorials/FitCurve.hpp
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/FitCurve.cpp \
+  /Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/OpenCVTutorials/FitCurve.hpp

@@ -41,3 +41,13 @@ Mat processImage(Mat source)
     return gray;
 }
 
+// Save the mat data to the image file.
+void saveImageFile(Mat mat, String path) {
+    
+    if (mat.empty()) {
+        //
+        cout << "The mat data is empty" << endl;
+    }
+    imwrite(path, mat);
+}
+

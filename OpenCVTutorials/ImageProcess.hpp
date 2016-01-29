@@ -32,5 +32,7 @@ Mat loadImageFile(String);
 
 Mat processImage(Mat); // Process image---gray, denoise and filter.
 
+void saveImageFile(Mat,String); // Save the mat data to the image file.
+
 
 #endif /* ImageProcess_hpp */

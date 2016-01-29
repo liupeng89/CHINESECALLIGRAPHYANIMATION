@@ -17,14 +17,16 @@
 //#include "MlddleLineProcess.hpp"
 //#include "ImageProcess.hpp"
 //#include "EdgeDetection.hpp"
-#include "Demo.hpp"
-#include "Test01.hpp"
+//#include "Demo.hpp"
+//#include "Test01.hpp"
+#include "MainProcess.hpp"
 using namespace std;
 
 int main(int argc, char** argv) {
     
 //    demo(argc, argv);
-    test();
+//    test();
+    process(argc, argv);
     
     return 0;
 }
