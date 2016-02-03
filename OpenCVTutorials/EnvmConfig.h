@@ -13,6 +13,10 @@ const string source = "/Users/peterliu/Documents/openDevelopment/one.png";
 const string edgedatafile = "/Users/peterliu/Documents/openDevelopment/edgeData.txt";
 const string thinningdatafile = "/Users/peterliu/Documents/openDevelopment/thinningData.txt";
 const string imageWithSkeletion = "/Users/peterliu/Documents/openDevelopment/imageWithSkeletion.png";
+const string imageWithSkeletionModified = "/Users/peterliu/Documents/openDevelopment/imageWithSkeletionModified.png";
+const string imageModified = "/Users/peterliu/Documents/openDevelopment/imageWithSkeletionModified01.png";
+
+
 
 //const string source = "/Users/heermaster/Documents/openDevelopment/one.png";
 //const string edgedatafile = "/Users/heermaster/Documents/openDevelopment/edgeData.txt";

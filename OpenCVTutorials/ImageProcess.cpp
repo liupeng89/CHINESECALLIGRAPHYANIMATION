@@ -27,7 +27,7 @@ Mat processImage(Mat source)
         return source;
     }
     
-    int grayThreshold = 100;
+    int grayThreshold = 80;
     
     Mat gray;
     
